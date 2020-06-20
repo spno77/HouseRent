@@ -2,13 +2,13 @@
   <div>
    <app /> 
    <b-container>
-    <h1 class="ti"> Music Info </h1>
+    <h1 class="ti"> Houses Info </h1>
     <b-row align-v="center">
         <b-col md="3" v-for="house in houses" :key="house.id">
           <b-card
            
             :title="house.title"
-            img-src = "https://picsum.photos/600/300/?image=25"
+            :img-src ="house.image" 
             img-alt="Image"
             img-top
             tag="article"
