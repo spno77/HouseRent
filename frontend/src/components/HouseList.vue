@@ -4,7 +4,7 @@
    <b-container>
     <h1 class="ti"> Houses Info </h1>
     <b-row align-v="center">
-        <b-col md="3" v-for="house in houses" :key="house.id">
+        <b-col md="3" v-for="(house,index) in houses" :key="house.id">
           <b-card
            
             :title="house.title"
@@ -16,10 +16,13 @@
             class="mb-2"
            >
             <b-card-text>
-              {{ house.description}}
+              <b>cost: {{ house.cost }} $ </b> <br>
+              {{ house.description }}
+             
+              
             </b-card-text>
 
-            <b-button href="#" variant="primary"> Info </b-button>
+            <router-link :to="{name: 'houses', params: { id: index }}" class="btn btn-primary">Info</router-link>
           </b-card>
         </b-col>  
     </b-row>
@@ -34,16 +37,17 @@ import axios from 'axios';
 
 export default {
   name: 'HouseList',
-  
+ 
   data(){
     return {
-      houses: []
+      houses: [],
+      id1: this.$route.params.id,
     }
   },
 
   mounted(){
     axios
-      .get('http://127.0.0.1:8000/api/v1/houses/')
+      .get('http://127.0.0.1:8000/api/v1/houses/?ordering=cost')
       .then(response => (this.houses = response.data))
   }
 

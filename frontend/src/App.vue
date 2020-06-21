@@ -1,21 +1,17 @@
 <template>
   <div id="app">
-    <HouseList />
-    <HouseDetail>
-    </HouseDetail>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import HouseList from './components/HouseList.vue'
-import HouseDetail from './components/HouseDetail.vue'
+
 
 
 export default {
   name: 'App',
   components: {
-    HouseList,
-    HouseDetail
+   
   },
 
 
