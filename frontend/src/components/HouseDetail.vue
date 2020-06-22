@@ -1,11 +1,20 @@
 <template>
-	<div>
-		<app />
-			<h1> <b>{{ houses[idd].title }} </b></h1>
-			<p>{{ houses[idd].description }} </p>
-			<p> cost : {{ houses[idd].cost }} $ </p>
+<div>
+	<app />
+		<h1> <b>{{ houses[idd].title }} </b></h1>
+		<p>{{ houses[idd].description }} </p>
+		<p> cost : {{ houses[idd].cost }} $ </p>
+	<div class="imgContainer">
+		<div>
 			<img :src="houses[idd].image">
-	</div>
+		</div>
+		<div class="imgButton">
+			<button type="button" class="btn btn-secondary mr-1">Edit</button>
+			<router-link :to="{name: 'delete', params: { id: this.idd }}" class="btn btn-danger">Delete</router-link>
+
+		</div>
+	</div>	
+</div>
 </template>
 
 <script>
@@ -21,6 +30,7 @@ export default {
     }
   },
 
+ 
   mounted(){
     axios
       .get('http://127.0.0.1:8000/api/v1/houses/?ordering=cost')
@@ -28,5 +38,12 @@ export default {
   }
 
 
-}	
+}
 </script>
+
+<style>
+  .imgButton{
+    text-align:center;
+    margin-top:5px;
+}
+</style>

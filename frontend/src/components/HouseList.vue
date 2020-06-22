@@ -17,7 +17,7 @@
            >
             <b-card-text>
               <b>cost: {{ house.cost }} $ </b> <br>
-              {{ house.description }}
+              {{house.id}}
              
               
             </b-card-text>
@@ -71,6 +71,14 @@ export default {
 
   display: block;
   margin: 0 auto
+}
+
+
+.img {
+    float: left;
+    width:  300px;
+    height: 300px;
+    background-size: cover;
 }
 
 </style>
