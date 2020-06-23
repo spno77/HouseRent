@@ -6,6 +6,7 @@ import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import HouseDetail from './components/HouseDetail.vue' 
 import HouseList   from './components/HouseList.vue'
 import HouseDelete   from './components/HouseDelete.vue'
+import HouseCreate   from './components/HouseCreate.vue'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -41,8 +42,13 @@ const routes = [
 		name: 'delete',
 		component: HouseDelete,
 		props: true
-
-	},		
+	},
+	{
+		path: '/houses/create',
+		name: 'create',
+		component: HouseCreate,
+		props: true
+	},
 
 ]
 

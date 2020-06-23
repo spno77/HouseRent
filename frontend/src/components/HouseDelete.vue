@@ -34,7 +34,7 @@
 
     deleteHouse: function(){
       axios
-       .delete('http://127.0.0.1:8000/api/v1/houses/'+ this.houses[this.idd].id)
+       .delete('http://127.0.0.1:8000/api/v1/houses/'+ this.houses[this.idd].id) 
       },
 
     goIndex: function(){
