@@ -10,8 +10,7 @@
 		</div>
 		<div class="imgButton">
 			<button type="button" class="btn btn-secondary mr-1">Edit</button>
-			<router-link :to="{name: 'delete', params: { id: houses[idd].id }}" class="btn btn-danger">Delete</router-link>
-			
+			<router-link :to="{name: 'delete', params: { id: this.idd }}" class="btn btn-danger">Delete</router-link>
 
 		</div>
 	</div>	
