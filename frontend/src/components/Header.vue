@@ -15,7 +15,7 @@
       <!-- Right aligned nav items -->
       <b-navbar-nav class="ml-auto">
         <b-nav-form>
-          <b-form-input size="sm" class="mr-sm-2" placeholder="Search"></b-form-input>
+          <b-form-input size="sm" v-model="search_term" v-on:keyup.enter="searchHouse" class="mr-sm-2" placeholder="Search"></b-form-input>
           <b-button size="sm" class="my-2 my-sm-0" type="submit">Search</b-button>
         </b-nav-form>
 
@@ -33,3 +33,29 @@
   </b-navbar>
 </div>
 </template>
+
+<script>
+  import axios from 'axios';
+
+  export default {
+   name: 'Header',
+
+   data(){
+    return {
+      houses : [],
+      search_term: '',
+    }
+   },
+
+   methods:{
+    searchHouse: function(){
+      axios
+      .get(`http://127.0.0.1:8000/api/v1/houses/?search=LALA`)
+      .then(response => (this.houses = response.data))
+    }
+
+   }
+  
+}
+
+</script>>

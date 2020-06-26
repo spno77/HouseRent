@@ -45,7 +45,12 @@
         ></b-form-input>
       </b-form-group>
 
-      
+     <b-form-group  label="Garage">
+      <b-form-radio-group class="pt-2">
+        <b-form-radio v-model="garage" value = "true">True</b-form-radio>
+        <b-form-radio v-model="garage" value = "false">False</b-form-radio>
+      </b-form-radio-group>
+    </b-form-group>
 
    
       <b-button  v-on:click="onSubmit" variant="primary">Submit</b-button>
@@ -68,6 +73,7 @@
           description: '',
           cost: '',
           rooms: '',
+          garage: true,
         
         show: true
       }
@@ -79,7 +85,8 @@
             title : this.title,
             description: this.description,
             rooms: this.rooms,
-            cost: this.cost
+            cost: this.cost,
+            garage: this.garage
           })
       },
     }

@@ -5,9 +5,10 @@
 		<h1>
 			Confirm delete:
 			<button type="button" v-on:click="deleteHouse" class="btn btn-danger">Delete</button>
-         
-
+      
 		</h1>
+
+
 
 	</div>
 </template>
