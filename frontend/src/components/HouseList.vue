@@ -4,10 +4,9 @@
    <b-container>
     <h1 class="ti"> Houses Info </h1>
     <router-link :to="{name: 'create'}" class="btn btn-secondary">Create</router-link>
-    <b-row align-v="center">
+    <b-row  align-v="center">
         <b-col md="3" v-for="(house,index) in houses" :key="house.id">
           <b-card
-           
             :title="house.title"
             :img-src ="house.image" 
             img-alt="Image"

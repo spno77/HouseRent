@@ -7,6 +7,7 @@ import HouseDetail from './components/HouseDetail.vue'
 import HouseList   from './components/HouseList.vue'
 import HouseDelete   from './components/HouseDelete.vue'
 import HouseCreate   from './components/HouseCreate.vue'
+import Header   from './components/Header.vue'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -24,6 +25,8 @@ Vue.config.productionTip = false
 Vue.use(VueAxios,axios)
 
 Vue.use(VueRouter)
+
+Vue.use(Header)
 
 const routes = [
 	{
