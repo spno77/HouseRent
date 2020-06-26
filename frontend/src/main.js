@@ -31,7 +31,8 @@ Vue.use(Header)
 const routes = [
 	{
 		path: '/' ,
-		component:HouseList, 
+		component:HouseList,
+		name: 'list', 
 		props: true
 	},
 	{
