@@ -5,6 +5,9 @@
 		<p>{{ houses[idd].description }} </p>
 		<p> cost : {{ houses[idd].cost }} $ </p>
 		<p> Garage:{{ houses[idd].garage }} </p>
+		<p> wifi:{{ houses[idd].wifi }} </p>
+		<p> Aircondition:{{ houses[idd].aircondition }} </p>
+
 	<div class="imgContainer">
 		<div>
 			<img :src="houses[idd].image">

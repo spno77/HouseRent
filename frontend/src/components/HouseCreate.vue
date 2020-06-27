@@ -45,14 +45,29 @@
         ></b-form-input>
       </b-form-group>
 
-     <b-form-group  label="Garage">
+     <b-form-group label="Garage:">
       <b-form-radio-group class="pt-2">
         <b-form-radio v-model="garage" value = "true">True</b-form-radio>
         <b-form-radio v-model="garage" value = "false">False</b-form-radio>
       </b-form-radio-group>
     </b-form-group>
 
-   
+    <b-form-group label="Wifi:">
+      <b-form-radio-group class="pt-2">
+        <b-form-radio v-model="wifi" value = "true">True</b-form-radio>
+        <b-form-radio v-model="wifi" value = "false">False</b-form-radio>
+      </b-form-radio-group>
+    </b-form-group>
+
+    <b-form-group label="Aircondition:">
+      <b-form-radio-group class="pt-2">
+        <b-form-radio v-model="aircondition" value = "true">True</b-form-radio>
+        <b-form-radio v-model="aircondition" value = "false">False</b-form-radio>
+      </b-form-radio-group>
+    </b-form-group>
+
+
+
       <b-button  v-on:click="onSubmit" variant="primary">Submit</b-button>
     </b-form>
    
@@ -74,6 +89,8 @@
           cost: '',
           rooms: '',
           garage: true,
+          wifi: true,
+          aircondition: true,
         
         show: true
       }
@@ -86,7 +103,9 @@
             description: this.description,
             rooms: this.rooms,
             cost: this.cost,
-            garage: this.garage
+            garage: this.garage,
+            wifi:   this.wifi,
+            aircondition: this.aircondition,
           })
       },
     }
