@@ -1,22 +1,23 @@
 <template>
 <div>
 	<app />
-		<h1> <b>{{ houses[idd].title }} </b></h1>
-		<p>{{ houses[idd].description }} </p>
-		<p> cost : {{ houses[idd].cost }} $ </p>
-		<p> Garage:{{ houses[idd].garage }} </p>
-		<p> wifi:{{ houses[idd].wifi }} </p>
-		<p> Aircondition:{{ houses[idd].aircondition }} </p>
+		<h1> <b>{{ house.title }} </b></h1>
+		<p>{{ house.description }} </p>
+		<p> cost : {{ house.cost }} $ </p>
+		<p> Garage:{{ house.garage }} </p>
+		<p> wifi:{{ house.wifi }} </p>
+		<p> Aircondition:{{ house.aircondition }} </p>
 
 	<div class="imgContainer">
 		<div>
-			<img :src="houses[idd].image">
+			<img :src="house.image">
 		</div>
+		
 		<div class="imgButton">
-			<button type="button" class="btn btn-secondary mr-1">Edit</button>
+			<router-link :to="{name: 'edit', params: { id: this.idd }}" class="btn btn-secondary">Edit</router-link>
 			<router-link :to="{name: 'delete', params: { id: this.idd }}" class="btn btn-danger">Delete</router-link>
-
 		</div>
+
 	</div>	
 </div>
 </template>
@@ -29,7 +30,7 @@ export default {
   
   data(){
     return {
-      houses : [],
+      house : {},
       idd : this.$route.params.id
     }
   },
@@ -37,8 +38,8 @@ export default {
  
   mounted(){
     axios
-      .get('http://127.0.0.1:8000/api/v1/houses/?ordering=cost')
-      .then(response => (this.houses = response.data))
+      .get(`http://127.0.0.1:8000/api/v1/houses/${ this.idd }`)
+      .then(response => (this.house = response.data))
   }
 
 

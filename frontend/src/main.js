@@ -7,6 +7,7 @@ import HouseDetail from './components/HouseDetail.vue'
 import HouseList   from './components/HouseList.vue'
 import HouseDelete   from './components/HouseDelete.vue'
 import HouseCreate   from './components/HouseCreate.vue'
+import HouseEdit   from './components/HouseEdit.vue'
 import Header   from './components/Header.vue'
 
 import 'bootstrap/dist/css/bootstrap.css'
@@ -53,6 +54,13 @@ const routes = [
 		component: HouseCreate,
 		props: true
 	},
+	{
+		path: '/houses/edit/:id/',
+		name: 'edit',
+		component: HouseEdit,
+		props: true
+	},
+
 
 ]
 

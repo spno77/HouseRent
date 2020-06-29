@@ -4,7 +4,7 @@
    <b-container>
     <h1 class="ti"> Houses Info </h1>
     <b-row  align-v="center">
-        <b-col md="3" v-for="(house,index) in houses" :key="house.id">
+        <b-col md="3" v-for="house in houses" :key="house.id">
           <b-card
             :title="house.title"
             :img-src ="house.image" 
@@ -21,7 +21,7 @@
               
             </b-card-text>
 
-            <router-link :to="{name: 'houses', params: { id: index }}" class="btn btn-primary">Info</router-link>
+            <router-link :to="{name: 'houses', params: { id: house.id }}" class="btn btn-primary">Info</router-link>
           </b-card>
         </b-col>  
     </b-row>
