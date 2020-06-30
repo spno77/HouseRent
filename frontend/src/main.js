@@ -3,11 +3,11 @@ import App from './App.vue'
 
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 
-import HouseDetail from './components/HouseDetail.vue' 
-import HouseList   from './components/HouseList.vue'
-import HouseDelete   from './components/HouseDelete.vue'
-import HouseCreate   from './components/HouseCreate.vue'
-import HouseEdit   from './components/HouseEdit.vue'
+import HouseDetail from './components/House/HouseDetail.vue' 
+import HouseList   from './components/House/HouseList.vue'
+import HouseDelete   from './components/House/HouseDelete.vue'
+import HouseCreate   from './components/House/HouseCreate.vue'
+import HouseEdit   from './components/House/HouseEdit.vue'
 import Header   from './components/Header.vue'
 
 import 'bootstrap/dist/css/bootstrap.css'

@@ -74,6 +74,7 @@
     ></b-form-file>
     <div class="mt-3">Selected file: {{ file ? file.name : '' }}</div>
 
+
       <b-button  v-on:click="onSubmit" variant="primary">Submit</b-button>
     </b-form>
    
@@ -113,14 +114,19 @@
             garage: this.garage,
             wifi:   this.wifi,
             aircondition: this.aircondition,
-            
+          
           })
         this.$router.push('/')
 
       },
-      onFileSelected(event){
-        this.selectedFile = event.target.files[0]
+
+      onFileChanged(event){
+        this.file = event.target.files[0]
       },
+
+      onUpload(){
+
+      }
       
     }
   }
