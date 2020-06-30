@@ -1,0 +1,83 @@
+<template>
+  <div>
+   <app /> 
+   <b-container>
+    <h1 class="ti"> Houses Info </h1>
+    <b-row  align-v="center">
+        <b-col md="3" v-for="house in houses" :key="house.id">
+          <b-card
+            :title="house.title"
+            :img-src ="house.image" 
+            img-alt="Image"
+            img-top
+            tag="article"
+            style="max-width: 20rem;"
+            class="mb-2"
+           >
+            <b-card-text>
+              <b>cost: {{ house.cost }} $ </b> <br>
+              {{house.id}}
+             
+              
+            </b-card-text>
+
+            <router-link :to="{name: 'houses', params: { id: house.id }}" class="btn btn-primary">Info</router-link>
+          </b-card>
+        </b-col>  
+    </b-row>
+  </b-container>
+  </div>
+</template>
+
+
+
+<script>
+import axios from 'axios';
+
+export default {
+  name: 'HouseList',
+ 
+  data(){
+    return {
+      houses: [],
+      id1: this.$route.params.id,
+    }
+  },
+
+  mounted(){
+    axios
+      .get('http://127.0.0.1:8000/api/v1/houses/?ordering=cost')
+      .then(response => (this.houses = response.data))
+  }
+
+}
+
+</script>
+
+<style scoped>
+  
+.ti{
+
+  color: lightblue;
+  text-align: center;
+
+}
+
+.ll {
+  max-width: 100%;
+  max-height: 80%;
+  width: auto;
+
+  display: block;
+  margin: 0 auto
+}
+
+
+.img {
+    float: left;
+    width:  300px;
+    height: 300px;
+    background-size: cover;
+}
+
+</style>
