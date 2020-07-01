@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     #3rd party
     'rest_framework',
     'corsheaders',
+    'rest_auth',
 
     #local
     'houses',
@@ -165,3 +166,4 @@ JWT_AUTH = {
 }
 
 
+REST_AUTH_SERIALIZERS = { 'USER_DETAILS_SERIALIZER':'users.serializers.UserSerializer' } 
