@@ -19,6 +19,9 @@ urlpatterns = [
 
 	#rest-auth endpoints
 	path('api/v1/rest-auth/', include('rest_auth.urls')),
+
+	#all-auth endpoints
+	path('api/v1/rest-auth/registration/',include('rest_auth.registration.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
