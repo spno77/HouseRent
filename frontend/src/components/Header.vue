@@ -8,7 +8,7 @@
 
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav>
-        <b-nav-item href="#">Link</b-nav-item>
+        <b-nav-item  :to="{name: 'register'}" > Register </b-nav-item>
         <b-nav-item  :to="{name: 'create'}" > Create </b-nav-item>
       </b-navbar-nav>
 

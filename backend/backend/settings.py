@@ -152,8 +152,7 @@ REST_FRAMEWORK = {
             'rest_framework.authentication.SessionAuthentication',
             'rest_framework.authentication.BasicAuthentication',
         ],
-        'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-        'PAGE_SIZE': 10,
+        
 }
 
 REST_USE_JWT = True
@@ -178,3 +177,4 @@ REST_AUTH_SERIALIZERS = { 'USER_DETAILS_SERIALIZER':'users.serializers.UserSeria
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 SITE_ID = 1
+

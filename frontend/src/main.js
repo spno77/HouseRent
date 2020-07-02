@@ -10,6 +10,9 @@ import HouseCreate   from './components/House/HouseCreate.vue'
 import HouseEdit   from './components/House/HouseEdit.vue'
 import Header   from './components/Header.vue'
 
+import RegisterUser from './components/User/RegisterUser.vue'
+
+
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
@@ -60,7 +63,12 @@ const routes = [
 		component: HouseEdit,
 		props: true
 	},
-
+	{
+		path: '/register',
+		name: 'register',
+		component: RegisterUser,
+		props: true
+	},
 
 ]
 
