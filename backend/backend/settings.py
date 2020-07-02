@@ -172,9 +172,14 @@ JWT_AUTH = {
 
 REST_AUTH_SERIALIZERS = { 'USER_DETAILS_SERIALIZER':'users.serializers.UserSerializer' } 
 
-REST_AUTH_SERIALIZERS = { 'USER_DETAILS_SERIALIZER':'users.serializers.UserSerializer' } 
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 SITE_ID = 1
 
+REST_AUTH_REGISTER_SERIALIZERS = {
+    'REGISTER_SERIALIZER': 'users.serializers.CustomRegisterSerializer',
+}
+
+
+ACCOUNT_ADAPTER = 'users.adapter.CustomAccountAdapter'
