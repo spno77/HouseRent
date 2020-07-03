@@ -12,6 +12,7 @@ import Header   from './components/Header.vue'
 
 import RegisterUser from './components/User/RegisterUser.vue'
 import LoginUser from './components/User/LoginUser.vue'
+import UserProfile from './components/User/UserProfile.vue'
 
 
 import 'bootstrap/dist/css/bootstrap.css'
@@ -74,6 +75,12 @@ const routes = [
 		path: '/login',
 		name: 'login',
 		component: LoginUser,
+		props: true
+	},
+	{
+		path: '/profile/:id',
+		name: 'profile',
+		component: UserProfile,
 		props: true
 	},
 

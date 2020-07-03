@@ -25,12 +25,13 @@
       </b-form-group>
 
       <b-button  v-on:click="onSubmit" variant="primary"> Login </b-button>
+      <router-link :to="{name: 'profile', params: { id: this.id }}" class="btn btn-secondary"> Profile </router-link>
+
     </b-form>
-   
-    
-
-
+     
      </b-container>
+      {{ this.id }}     
+
       </div>
     </div>
 </template>
@@ -46,7 +47,7 @@
 
         username: '',
         password: '',
-        jwt: '',
+        id: '',
 
         show: true
       }
@@ -60,7 +61,7 @@
             username:   this.username,
             password:   this.password
           })
-          .then(response => (this.jwt = response.data.token))
+          .then(response => (this.id = response.data.user.id))
       },
     }
   }
