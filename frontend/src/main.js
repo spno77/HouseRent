@@ -11,6 +11,7 @@ import HouseEdit   from './components/House/HouseEdit.vue'
 import Header   from './components/Header.vue'
 
 import RegisterUser from './components/User/RegisterUser.vue'
+import LoginUser from './components/User/LoginUser.vue'
 
 
 import 'bootstrap/dist/css/bootstrap.css'
@@ -67,6 +68,12 @@ const routes = [
 		path: '/register',
 		name: 'register',
 		component: RegisterUser,
+		props: true
+	},
+	{
+		path: '/login',
+		name: 'login',
+		component: LoginUser,
 		props: true
 	},
 

@@ -8,8 +8,8 @@
 
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav>
-        <b-nav-item  :to="{name: 'register'}" > Register </b-nav-item>
-        <b-nav-item  :to="{name: 'create'}" > Create </b-nav-item>
+        <b-nav-item  :to="{name: 'register'}"> Register </b-nav-item>
+        <b-nav-item  :to="{name: 'create'}">   Create </b-nav-item>
       </b-navbar-nav>
 
       <!-- Right aligned nav items -->
@@ -25,8 +25,9 @@
           <template v-slot:button-content>
             <em>User</em>
           </template>
-          <b-dropdown-item href="#">Profile</b-dropdown-item>
-          <b-dropdown-item href="#">Sign Out</b-dropdown-item>
+          <b-dropdown-item :to="{name: 'login'}"> Login </b-dropdown-item>
+          <b-dropdown-item> Profile</b-dropdown-item>
+          <b-dropdown-item @click="logout"> Sign Out</b-dropdown-item>
         </b-nav-item-dropdown>
       </b-navbar-nav>
     </b-collapse>
@@ -48,12 +49,18 @@
    },
 
    methods:{
+    
     searchHouse: function(){
       axios
-      .get(`http://127.0.0.1:8000/api/v1/houses/?search=LALA`)
-      .then(response => (this.houses = response.data))
-    }
+        .get(`http://127.0.0.1:8000/api/v1/houses/?search=LALA`)
+        .then(response => (this.houses = response.data))
+    },
 
+    logout: function(){
+      axios
+        .post('http://127.0.0.1:8000/api/v1/rest-auth/logout/')
+    }
+    
    }
   
 }
