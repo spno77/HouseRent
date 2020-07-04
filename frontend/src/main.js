@@ -13,6 +13,8 @@ import Header   from './components/Header.vue'
 import RegisterUser from './components/User/RegisterUser.vue'
 import LoginUser from './components/User/LoginUser.vue'
 import UserProfile from './components/User/UserProfile.vue'
+import UserEdit from './components/User/UserEdit.vue'
+
 
 
 import 'bootstrap/dist/css/bootstrap.css'
@@ -81,6 +83,12 @@ const routes = [
 		path: '/profile/:id',
 		name: 'profile',
 		component: UserProfile,
+		props: true
+	},
+	{
+		path: '/profile/edit/:id',
+		name: 'editprofile',
+		component: UserEdit,
 		props: true
 	},
 

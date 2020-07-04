@@ -27,10 +27,14 @@
       <b-button  v-on:click="onSubmit" variant="primary"> Login </b-button>
       <router-link :to="{name: 'profile', params: { id: this.id }}" class="btn btn-secondary"> Profile </router-link>
 
+      
+      
     </b-form>
      
      </b-container>
       {{ this.id }}     
+
+
 
       </div>
     </div>

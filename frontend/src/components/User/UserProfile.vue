@@ -17,6 +17,8 @@
 			<img :src="user.image">
 	</span>
    </div>
+
+   <router-link :to="{name: 'editprofile', params: { id: this.id }}" class="btn btn-secondary">Edit</router-link>
     
 
   </b-jumbotron>
