@@ -32,22 +32,20 @@
 
 
 <script>
-import axios from 'axios';
+//import axios from 'axios';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'HouseList',
  
-  data(){
-    return {
-      houses: [],
-      id1: this.$route.params.id,
-    }
+  computed:{
+    ...mapGetters([
+        'houses'
+      ])
   },
 
   mounted(){
-    axios
-      .get('http://127.0.0.1:8000/api/v1/houses/?ordering=cost')
-      .then(response => (this.houses = response.data))
+    this.$store.dispatch('getHouses'); 
   }
 
 }

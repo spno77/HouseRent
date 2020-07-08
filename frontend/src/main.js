@@ -15,7 +15,7 @@ import LoginUser from './components/User/LoginUser.vue'
 import UserProfile from './components/User/UserProfile.vue'
 import UserEdit from './components/User/UserEdit.vue'
 
-
+import store from './store/index.js'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -24,6 +24,7 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 
 import VueRouter from 'vue-router'
+import Vuex from 'vuex'
 
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
@@ -33,6 +34,8 @@ Vue.config.productionTip = false
 Vue.use(VueAxios,axios)
 
 Vue.use(VueRouter)
+
+Vue.use(Vuex)
 
 Vue.use(Header)
 
@@ -102,4 +105,5 @@ const router = new VueRouter({
 new Vue({
   render: h => h(App),
   router,
+  store
 }).$mount('#app')
