@@ -12,7 +12,7 @@
       >
         <b-form-input
           id="input-1"
-          v-model="title"
+          v-model="house.title"
           required
           placeholder="Enter title"
         ></b-form-input>
@@ -21,7 +21,7 @@
       <b-form-group id="input-group-2" label="Description:" label-for="input-2">
         <b-form-input
           id="input-2"
-          v-model="description"
+          v-model="house.description"
           required
           placeholder="Enter description"
         ></b-form-input>
@@ -30,7 +30,7 @@
       <b-form-group id="input-group-2" label="Rooms:" label-for="input-2">
         <b-form-input
           id="input-2"
-          v-model="rooms"
+          v-model="house.rooms"
           required
           placeholder="Enter room number"
         ></b-form-input>
@@ -39,7 +39,7 @@
       <b-form-group id="input-group-2" label="Cost:" label-for="input-2">
         <b-form-input
           id="input-2"
-          v-model="cost"
+          v-model="house.cost"
           required
           placeholder="Enter cost"
         ></b-form-input>
@@ -47,27 +47,27 @@
 
      <b-form-group label="Garage:">
       <b-form-radio-group class="pt-2">
-        <b-form-radio v-model="garage" value = "true">True</b-form-radio>
-        <b-form-radio v-model="garage" value = "false">False</b-form-radio>
+        <b-form-radio v-model="house.garage" value = "true">True</b-form-radio>
+        <b-form-radio v-model="house.garage" value = "false">False</b-form-radio>
       </b-form-radio-group>
     </b-form-group>
 
     <b-form-group label="Wifi:">
       <b-form-radio-group class="pt-2">
-        <b-form-radio v-model="wifi" value = "true">True</b-form-radio>
-        <b-form-radio v-model="wifi" value = "false">False</b-form-radio>
+        <b-form-radio v-model="house.wifi" value = "true">True</b-form-radio>
+        <b-form-radio v-model="house.wifi" value = "false">False</b-form-radio>
       </b-form-radio-group>
     </b-form-group>
 
     <b-form-group label="Aircondition:">
       <b-form-radio-group class="pt-2">
-        <b-form-radio v-model="aircondition" value = "true">True</b-form-radio>
-        <b-form-radio v-model="aircondition" value = "false">False</b-form-radio>
+        <b-form-radio v-model="house.aircondition" value = "true">True</b-form-radio>
+        <b-form-radio v-model="house.aircondition" value = "false">False</b-form-radio>
       </b-form-radio-group>
     </b-form-group>
 
      <b-form-file
-      v-model="file"
+      v-model="house.file"
       :state="Boolean(file)"
       placeholder="Choose a file or drop it here..."
       drop-placeholder="Drop file here..."
@@ -91,42 +91,34 @@
     data() {
       return {
         
-        title: '',
-        description: '',
-        cost: '',
-        rooms: '',
-        garage: true,
-        wifi: true,
-        aircondition: true,
-        file: null,
-        
+        house:{  
+          title: '',
+          description: '',
+          cost: '',
+          rooms: '',
+          garage: true,
+          wifi: true,
+          aircondition: true,
+          file: null,
+        },
+
         show: true
       }
     },
+
     methods: {
       onSubmit() {
         axios
-          .post('http://127.0.0.1:8000/api/v1/houses/',{
-            title : this.title,
-            description: this.description,
-            rooms: this.rooms,
-            cost: this.cost,
-            garage: this.garage,
-            wifi:   this.wifi,
-            aircondition: this.aircondition,
-          
-          })
+          .post('http://127.0.0.1:8000/api/v1/houses/',
+           this.house)
         this.$router.push('/')
 
       },
 
-      onFileChanged(event){
-        this.file = event.target.files[0]
-      },
+    onFileChanged(event){
+      this.file = event.target.files[0]
+    },
 
-      onUpload(){
-
-      }
       
     }
   }

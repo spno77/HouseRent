@@ -37,23 +37,32 @@
 
 <script>
   import axios from 'axios';
+  import { mapGetters } from 'vuex';
 
   export default {
-   name: 'Header',
+  name: 'Header',
 
    data(){
     return {
-      houses : [],
+      //houses : [],
       search_term: '',
     }
    },
+   
+   //mounted(){
+    //this.$store.dispatch('searchHouses'); 
+   //},
 
+   computed:{
+    ...mapGetters([
+        'search_houses'
+      ])
+  },
+
+ 
    methods:{
-    
     searchHouse: function(){
-      axios
-        .get(`http://127.0.0.1:8000/api/v1/houses/?search=LALA`)
-        .then(response => (this.houses = response.data))
+      this.$store.dispatch('searchHouses'); 
     },
 
     logout: function(){
