@@ -23,7 +23,7 @@
         <b-nav-item-dropdown right>
           <!-- Using 'button-content' slot -->
           <template v-slot:button-content>
-            <em>User</em>
+            <em>{{ tuser.user.username}}</em>
           </template>
           <b-dropdown-item :to="{name: 'login'}"> Login </b-dropdown-item>
 
