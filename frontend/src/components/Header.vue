@@ -26,7 +26,13 @@
             <em>User</em>
           </template>
           <b-dropdown-item :to="{name: 'login'}"> Login </b-dropdown-item>
-          <b-dropdown-item> Profile</b-dropdown-item>
+
+          <div v-if="tuser.user.id !==''">
+            <b-dropdown-item  
+            :to="{name: 'profile', params: { id: tuser.user.id }}"> Profile
+            </b-dropdown-item>
+          </div>
+
           <b-dropdown-item @click="logout"> Sign Out</b-dropdown-item>
         </b-nav-item-dropdown>
       </b-navbar-nav>
@@ -46,19 +52,16 @@
     return {
       //houses : [],
       search_term: '',
+      //id: this.tuser.user.id
     }
    },
    
-   //mounted(){
-    //this.$store.dispatch('searchHouses'); 
-   //},
-
    computed:{
-    ...mapGetters([
-        'search_houses'
-      ])
-  },
-
+      ...mapGetters([
+        'tuser',
+      ]),
+     },
+  
  
    methods:{
     searchHouse: function(){
@@ -68,7 +71,12 @@
     logout: function(){
       axios
         .post('http://127.0.0.1:8000/api/v1/rest-auth/logout/')
-    }
+    },
+
+    get_id(){
+        this.id = this.tuser.user.id
+        return this.id
+      }
     
    }
   

@@ -39,8 +39,7 @@ const actions = {
 
 const getters = {
 	houses: state => state.houses,
-	tuser:   state => state.user,
-	
+	tuser:  state => state.user,
 }
 
 
