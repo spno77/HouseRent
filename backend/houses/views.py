@@ -13,6 +13,11 @@ class HouseList(generics.ListCreateAPIView):
 	search_fields = ['title','description']
 	ordering_fields = ['cost']
 
+	def perform_create(self, serializer):
+		serializer.save(host=self.request.user)
+
+
+
 class HouseDetail(generics.RetrieveUpdateDestroyAPIView):
 	queryset = House.objects.all()
 	serializer_class = HouseSerializer

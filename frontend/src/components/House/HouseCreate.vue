@@ -111,6 +111,9 @@
         axios
           .post('http://127.0.0.1:8000/api/v1/houses/',
            this.house)
+          .catch((err) => {
+             console.log(err.response.data);
+           });
         this.$router.push('/')
 
       },

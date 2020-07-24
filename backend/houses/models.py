@@ -1,5 +1,6 @@
 from django.db import models
 from PIL import Image
+from django.contrib.auth import get_user_model
 
 class House(models.Model):
 
@@ -11,6 +12,8 @@ class House(models.Model):
 	wifi = models.BooleanField(default=False)
 	aircondition = models.BooleanField(default=False)
 	image = models.ImageField(default='default.jpg',upload_to='images')
+
+	host = models.ForeignKey(get_user_model(),on_delete=models.CASCADE,related_name='user')
 
 	def save(self,*args,**kwargs):
 		super().save(*args,**kwargs)

@@ -2,10 +2,14 @@
   <div>
    <app /> 
    <b-container>
+
     <h1 class="ti"> Houses Info </h1>
-    <b-row  align-v="center">
+   
+    <b-row>
+       <b-card-group> 
         <b-col md="3" v-for="house in houses" :key="house.id">
           <b-card
+            bg-variant="dark" text-variant="white"
             :title="house.title"
             :img-src ="house.image" 
             img-alt="Image"
@@ -23,8 +27,10 @@
 
             <router-link :to="{name: 'houses', params: { id: house.id }}" class="btn btn-primary">Info</router-link>
           </b-card>
-        </b-col>  
+        </b-col> 
+        </b-card-group> 
     </b-row>
+     
   </b-container>
   </div>
 </template>

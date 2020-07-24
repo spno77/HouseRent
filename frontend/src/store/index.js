@@ -11,6 +11,7 @@ const state = {
 		username: '',
 		password: '',
 	},
+	isLoggedIn: false
 }
 
 const mutations = {
