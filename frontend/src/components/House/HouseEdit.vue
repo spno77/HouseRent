@@ -85,6 +85,7 @@
 
 <script>
  import axios from 'axios';
+ import { mapGetters } from 'vuex';
 
  export default{
     data(){
@@ -106,6 +107,12 @@
      }
     },
 
+    computed:{
+      ...mapGetters([
+        'tuser'
+      ])
+    },
+
     mounted(){
       axios
         .get('http://127.0.0.1:8000/api/v1/houses/'+ this.idd)
@@ -122,14 +129,14 @@
       editHouse() {
         axios
           .put('http://127.0.0.1:8000/api/v1/houses/'+ this.idd+ '/',{
-            title : this.house.title,
-            description: this.house.description,
-            rooms: this.house.rooms,
-            cost: this.house.cost,
-            garage: this.house.garage,
-            wifi:   this.house.wifi,
+            title :       this.house.title,
+            description:  this.house.description,
+            rooms:        this.house.rooms,
+            cost:         this.house.cost,
+            garage:       this.house.garage,
+            wifi:         this.house.wifi,
             aircondition: this.house.aircondition,
-            
+            host:         this.tuser.user.id
           })
         this.$router.push('/')
       },
