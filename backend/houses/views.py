@@ -16,7 +16,7 @@ class HouseList(generics.ListCreateAPIView):
 	def perform_create(self, serializer):
 		serializer.save(host=self.request.user)
 
-
+	
 
 class HouseDetail(generics.RetrieveUpdateDestroyAPIView):
 	queryset = House.objects.all()

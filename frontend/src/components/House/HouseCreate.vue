@@ -86,7 +86,8 @@
 
 <script>
  import axios from 'axios';
-
+ import { mapGetters } from 'vuex';
+  
   export default {
     data() {
       return {
@@ -106,14 +107,31 @@
       }
     },
 
+    computed:{
+      ...mapGetters([
+        'tuser'
+      ])
+    },
+
     methods: {
       onSubmit() {
         axios
-          .post('http://127.0.0.1:8000/api/v1/houses/',
-           this.house)
+          .post('http://127.0.0.1:8000/api/v1/houses/',{
+            title:        this.house.title,
+            description:  this.house.description,
+            cost:         this.house.cost,
+            rooms:        this.house.rooms,
+            garage:       this.house.garage,
+            wifi:         this.house.wifi,
+            aircondition: this.house.aircondition,
+            host:         this.tuser.user.id
+          },
+           {headers: {'Authorization': 'JWT ' + this.tuser.token}}  
+          )
           .catch((err) => {
              console.log(err.response.data);
            });
+        
         this.$router.push('/')
 
       },

@@ -4,9 +4,9 @@
    <b-container>
 
     <h1 class="ti"> Houses Info </h1>
-   
-    <b-row>
-       <b-card-group> 
+     <b-row  align-v="center">
+  
+       
         <b-col md="3" v-for="house in houses" :key="house.id">
           <b-card
             bg-variant="dark" text-variant="white"
@@ -28,7 +28,7 @@
             <router-link :to="{name: 'houses', params: { id: house.id }}" class="btn btn-primary">Info</router-link>
           </b-card>
         </b-col> 
-        </b-card-group> 
+     
     </b-row>
      
   </b-container>

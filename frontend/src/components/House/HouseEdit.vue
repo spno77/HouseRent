@@ -112,6 +112,9 @@
         .then( response => {
            this.house = response.data
         })
+         .catch((err) => {
+           console.log(err.response.data);
+           });
      }, 
 
     methods:{

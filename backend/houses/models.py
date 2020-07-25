@@ -13,7 +13,7 @@ class House(models.Model):
 	aircondition = models.BooleanField(default=False)
 	image = models.ImageField(default='default.jpg',upload_to='images')
 
-	host = models.ForeignKey(get_user_model(),on_delete=models.CASCADE,related_name='user')
+	host = models.ForeignKey(get_user_model(),on_delete=models.CASCADE,related_name='host')
 
 	def save(self,*args,**kwargs):
 		super().save(*args,**kwargs)
