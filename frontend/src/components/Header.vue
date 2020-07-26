@@ -20,14 +20,16 @@
         </b-nav-form>
  
 
-       <b-nav-item-dropdown right>
+       <b-nav-item-dropdown right >
           <!-- Using 'button-content' slot -->
           <template v-slot:button-content>
             <em>User</em>
           </template>
           <b-dropdown-item :to="{name: 'login'}"> Login </b-dropdown-item>
            
-
+            <b-dropdown-item  v-if="isLoggedIn===true"
+            :to="{name: 'profile', params: { id: tuser.user.id }}"> Profile
+            </b-dropdown-item> 
          
          
              <b-dropdown-divider></b-dropdown-divider>
@@ -56,16 +58,15 @@
       //houses : [],
       search_term: '',
       id: this.tuser.user.id,
-      logged: false,
-      tara: 2
     }
    },
    
    computed:{
       ...mapGetters([
         'tuser',
+        'isLoggedIn'
       ]),
-     },
+    },
   
  
    methods:{

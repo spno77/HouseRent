@@ -23,6 +23,10 @@ const mutations = {
 		state.user = payload
 	},
 
+	iS_LOGGED_IN(state){
+		state.isLoggedIn = true
+	}
+
 }
 
 const actions = {
@@ -35,12 +39,14 @@ const actions = {
 		axios.post('http://127.0.0.1:8000/api/v1/rest-auth/login/',user).then((response) => {
 		commit('LOGIN_USER', response.data)
 		});
+		commit('iS_LOGGED_IN')
 	},
 }
 
 const getters = {
-	houses: state => state.houses,
-	tuser:  state => state.user,
+	houses: 	state => state.houses,
+	tuser:  	state => state.user,
+	isLoggedIn: store => state.isLoggedIn
 }
 
 
