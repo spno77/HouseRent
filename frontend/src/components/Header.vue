@@ -23,7 +23,8 @@
        <b-nav-item-dropdown right >
           <!-- Using 'button-content' slot -->
           <template v-slot:button-content>
-            <em>User</em>
+            <em v-if="isLoggedIn===true">{{tuser.user.username}}</em>
+            <em v-else>User</em>
           </template>
           <b-dropdown-item :to="{name: 'login'}"> Login </b-dropdown-item>
            
