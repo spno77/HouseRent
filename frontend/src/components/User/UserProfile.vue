@@ -2,7 +2,7 @@
  
  <div>
  <app />	
-  <b-jumbotron header="Profile:" header-level="4">
+  <b-jumbotron header="Profile:" header-level="4" >
     
    <div>
     <p> <b>Username:</b>    {{ user.username }} </p>

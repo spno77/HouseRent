@@ -125,6 +125,9 @@
             password2:  this.password2,
             role:       this.role
           })
+          .catch((err) => {
+           console.log(err.response.data);
+           });
       },
     }
   }
