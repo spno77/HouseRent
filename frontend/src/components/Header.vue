@@ -35,7 +35,7 @@
          
              <b-dropdown-divider></b-dropdown-divider>
 
-          <b-dropdown-item @click="logout"> Sign Out</b-dropdown-item>
+          <b-dropdown-item @click="logoutUser"> Sign Out</b-dropdown-item>
         </b-nav-item-dropdown>
        
       </b-navbar-nav>
@@ -50,6 +50,7 @@
 <script>
   import axios from 'axios';
   import { mapGetters } from 'vuex';
+  import { mapActions } from 'vuex';
 
   export default {
   name: 'Header',
@@ -71,13 +72,11 @@
   
  
    methods:{
+   
+    ...mapActions(['logoutUser']),
+
     searchHouse: function(){
       this.$store.dispatch('searchHouses'); 
-    },
-
-    logout: function(){
-      axios
-        .post('http://127.0.0.1:8000/api/v1/rest-auth/logout/')
     },
 
     change_log(){

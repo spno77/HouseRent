@@ -25,6 +25,10 @@ const mutations = {
 
 	iS_LOGGED_IN(state){
 		state.isLoggedIn = true
+	},
+
+	iS_NOT_LOGGED_IN(state){
+		state.isLoggedIn = false
 	}
 
 }
@@ -41,6 +45,12 @@ const actions = {
 		});
 		commit('iS_LOGGED_IN')
 	},
+	logoutUser({ commit }){
+		axios.post('http://127.0.0.1:8000/api/v1/rest-auth/logout/').then((response) => {
+		commit('LOGIN_USER',null)
+		});
+		commit('iS_NOT_LOGGED_IN')
+	}
 }
 
 const getters = {
