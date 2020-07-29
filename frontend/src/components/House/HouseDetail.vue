@@ -16,6 +16,7 @@
 		<div class="imgButton">
 			<router-link :to="{name: 'edit', params: { id: this.idd }}" class="btn btn-secondary">Edit</router-link>
 			<router-link :to="{name: 'delete', params: { id: this.idd }}" class="btn btn-danger">Delete</router-link>
+			<router-link :to="{name: 'reservation', params: { id: this.idd }}" class="btn btn-success">Reserve</router-link>
 		</div>
 
 	</div>	
