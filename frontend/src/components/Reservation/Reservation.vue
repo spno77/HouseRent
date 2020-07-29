@@ -44,7 +44,9 @@
           </b-form-group>
 
           <b-button  v-on:click="onSubmit" variant="success">Submit</b-button>
+        
           </b-form>
+            <h1> Cost is : {{this.house.cost * this.reservation.days}} $ </h1>
           </b-container>
         </div>
     </div>
@@ -62,7 +64,8 @@
     
     data() {
       return {
-        idd : this.$route.params.id,
+        idd: this.$route.params.id,
+        showCost: false, 
         reservation:{
           days: '',
         },
@@ -110,6 +113,11 @@
         this.$router.push('/')
 
       },
+    
+    changeCost(){
+      this.showCost = true
+    }
+
 
     },
   
