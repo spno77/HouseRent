@@ -15,6 +15,8 @@ import LoginUser from './components/User/LoginUser.vue'
 import UserProfile from './components/User/UserProfile.vue'
 import UserEdit from './components/User/UserEdit.vue'
 
+import Reservation from './components/Reservation/Reservation.vue'
+
 import store from './store/index.js'
 
 import 'bootstrap/dist/css/bootstrap.css'
@@ -92,6 +94,12 @@ const routes = [
 		path: '/profile/edit/:id',
 		name: 'editprofile',
 		component: UserEdit,
+		props: true
+	},
+	{
+		path: '/reservation/:id',
+		name: 'reservation',
+		component: Reservation,
 		props: true
 	},
 

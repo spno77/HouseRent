@@ -30,6 +30,7 @@
       <b-form-group id="input-group-2" label="Rooms:" label-for="input-2">
         <b-form-input
           id="input-2"
+          type="number"
           v-model="house.rooms"
           required
           placeholder="Enter room number"
@@ -39,6 +40,7 @@
       <b-form-group id="input-group-2" label="Cost:" label-for="input-2">
         <b-form-input
           id="input-2"
+          type="number"
           v-model="house.cost"
           required
           placeholder="Enter cost"
