@@ -8,7 +8,7 @@
 
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav>
-        <b-nav-item  :to="{name: 'register'}"> Register </b-nav-item>
+        
         <b-nav-item  :to="{name: 'create'}">   Create </b-nav-item>
       </b-navbar-nav>
 
@@ -26,16 +26,25 @@
             <em v-if="isLoggedIn===true">{{tuser.user.username}}</em>
             <em v-else>User</em>
           </template>
-          <b-dropdown-item :to="{name: 'login'}"> Login </b-dropdown-item>
-           
+         
+          <b-dropdown-item v-if="isLoggedIn===false"
+          :to="{name: 'register'}"> Register </b-dropdown-item>
+
+          <b-dropdown-item v-if="isLoggedIn===false" 
+          :to="{name: 'login'}"> Login </b-dropdown-item>
+          
+
+
             <b-dropdown-item  v-if="isLoggedIn===true"
             :to="{name: 'profile', params: { id: tuser.user.id }}"> Profile
             </b-dropdown-item> 
          
-         
-             <b-dropdown-divider></b-dropdown-divider>
 
-          <b-dropdown-item @click="logoutUser"> Sign Out</b-dropdown-item>
+         
+             <b-dropdown-divider v-if="isLoggedIn===true"></b-dropdown-divider>
+
+          <b-dropdown-item v-if="isLoggedIn===true" 
+          @click="logoutUser"> Sign Out</b-dropdown-item>
         </b-nav-item-dropdown>
        
       </b-navbar-nav>
