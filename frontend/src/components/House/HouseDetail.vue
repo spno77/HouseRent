@@ -16,7 +16,7 @@
 		<div class="imgButton">
 			<router-link :to="{name: 'edit', params: { id: this.idd }}" class="btn btn-secondary">Edit</router-link>
 			<router-link :to="{name: 'delete', params: { id: this.idd }}" class="btn btn-danger">Delete</router-link>
-			<router-link :to="{name: 'reservation', params: { id: this.idd }}" class="btn btn-success">Reserve</router-link>
+			<router-link v-if="isLoggedIn===true" :to="{name: 'reservation', params: { id: this.idd }}" class="btn btn-success">Reserve</router-link>
 		</div>
 
 	</div>	
@@ -25,6 +25,7 @@
 
 <script>
 import axios from 'axios';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'HouseDetail',
@@ -36,7 +37,13 @@ export default {
     }
   },
 
- 
+   computed:{
+      ...mapGetters([
+        'tuser',
+        'isLoggedIn'
+      ]),
+    },
+  
   mounted(){
     axios
       .get(`http://127.0.0.1:8000/api/v1/houses/${ this.idd }`)
