@@ -11,13 +11,13 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('houses', '0001_initial'),
+        ('reservations', '0001_initial'),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='house',
-            name='host',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='host', to=settings.AUTH_USER_MODEL),
+            model_name='reservation',
+            name='tenant',
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='tenant', to=settings.AUTH_USER_MODEL),
         ),
     ]

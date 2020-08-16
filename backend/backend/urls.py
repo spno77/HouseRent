@@ -13,6 +13,8 @@ urlpatterns = [
     path('api/v1/',include('houses.urls')),
     path('api/v1/',include('users.urls')),
     path('api/v1/',include('reservations.urls')),
+    path('api/v1/',include('reviews.urls')),
+
 
     #JWT endpoints
     path('api-token-auth/', obtain_jwt_token),

@@ -13,4 +13,4 @@ class Reservation(models.Model):
 	
 
 	def __str__(self):
-		return self.tenant and self.house
+		return self.tenant and str(self.house)
