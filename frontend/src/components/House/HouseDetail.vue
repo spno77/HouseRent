@@ -14,10 +14,10 @@
 		</div>
 		
 		<div class="imgButton">
-      <div v-if="house.host === tuser.user.username">
+      <div v-if="isLoggedIn===true && house.host === tuser.user.username">
         <router-link :to="{name: 'edit', params: { id: this.idd }}" class="btn btn-secondary">Edit</router-link>
         <router-link :to="{name: 'delete', params: { id: this.idd }}" class="btn btn-danger">Delete</router-link>
-      </div>
+       </div>
 			<router-link v-if="isLoggedIn===true && house.host !== tuser.user.username" :to="{name: 'reservation', params: { id: this.idd }}" class="btn btn-success">Reserve</router-link>
 		</div>
 

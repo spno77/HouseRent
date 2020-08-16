@@ -7,7 +7,7 @@
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
     <b-collapse id="nav-collapse" is-nav>
-      <b-navbar-nav>
+      <b-navbar-nav v-if="isLoggedIn === true && tuser.user.role === 'host' ">
         
         <b-nav-item  :to="{name: 'create'}">   Create </b-nav-item>
       </b-navbar-nav>
