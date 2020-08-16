@@ -11,7 +11,8 @@ const state = {
 		username: '',
 		password: '',
 	},
-	isLoggedIn: false
+	isLoggedIn: false,
+	owner: '', 
 }
 
 const mutations = {
@@ -29,7 +30,7 @@ const mutations = {
 
 	iS_NOT_LOGGED_IN(state){
 		state.isLoggedIn = false
-	}
+	},
 
 }
 
@@ -50,13 +51,14 @@ const actions = {
 		commit('LOGIN_USER',null)
 		});
 		commit('iS_NOT_LOGGED_IN')
-	}
+	},
+
 }
 
 const getters = {
 	houses: 	state => state.houses,
 	tuser:  	state => state.user,
-	isLoggedIn: store => state.isLoggedIn
+	isLoggedIn: store => state.isLoggedIn,
 }
 
 
