@@ -46,7 +46,7 @@
           <b-button  v-on:click="onSubmit" variant="success">Submit</b-button>
         
           </b-form>
-            <h1> Cost is : {{this.house.cost * this.reservation.days}} $ </h1>
+            <h1> Cost is : {{ this.calculateFinalCost() }} $ </h1>
           </b-container>
         </div>
     </div>
@@ -73,7 +73,8 @@
           title: '',
           cost: '',
         },
-        show: true
+        show: true,
+        finalCost: 0,
       }
     },
     computed:{
@@ -100,7 +101,7 @@
         axios
           .post('http://127.0.0.1:8000/api/v1/reservations/',{
             house:        this.house.id,
-            cost:         this.house.cost,
+            cost:         this.finalCost,
             days:         this.reservation.days,
             tenant:       this.tuser.user.id
           },
@@ -114,10 +115,14 @@
 
       },
     
-    changeCost(){
-      this.showCost = true
-    }
+      changeCost(){
+        this.showCost = true
+      },
 
+      calculateFinalCost(){
+        this.finalCost = this.house.cost * this.reservation.days
+        return this.finalCost
+      }
 
     },
   
