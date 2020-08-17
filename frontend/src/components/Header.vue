@@ -33,14 +33,16 @@
           <b-dropdown-item v-if="isLoggedIn===false" 
           :to="{name: 'login'}"> Login </b-dropdown-item>
           
+            <b-dropdown-item  v-if="isLoggedIn===true"
+            :to="{name: 'reservationlist'}"> My Reservations
+            </b-dropdown-item> 
 
 
             <b-dropdown-item  v-if="isLoggedIn===true"
             :to="{name: 'profile', params: { id: tuser.user.id }}"> Profile
             </b-dropdown-item> 
          
-
-         
+            
              <b-dropdown-divider v-if="isLoggedIn===true"></b-dropdown-divider>
 
           <b-dropdown-item v-if="isLoggedIn===true" 
@@ -75,14 +77,14 @@
    computed:{
       ...mapGetters([
         'tuser',
-        'isLoggedIn'
+        'isLoggedIn',
       ]),
     },
   
  
    methods:{
    
-    ...mapActions(['logoutUser']),
+    ...mapActions(['logoutUser','getReservations']),
 
     searchHouse: function(){
       this.$store.dispatch('searchHouses'); 

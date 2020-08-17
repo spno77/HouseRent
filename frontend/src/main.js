@@ -17,6 +17,8 @@ import UserEdit from './components/User/UserEdit.vue'
 
 import Reservation from './components/Reservation/Reservation.vue'
 import ReservationDetail from './components/Reservation/ReservationDetail.vue'
+import ReservationList from './components/Reservation/ReservationList.vue'
+
 
 import ReviewAdd from './components/Review/ReviewAdd.vue'
 
@@ -109,6 +111,12 @@ const routes = [
 		path: '/reservation/detail',
 		name: 'reservationdetail',
 		component: ReservationDetail,
+		props: true
+	},
+	{
+		path: '/reservation/list',
+		name: 'reservationlist',
+		component: ReservationList,
 		props: true
 	},
 	{

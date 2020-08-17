@@ -9,9 +9,13 @@ from houses.models import House
 
 
 class ReservationList(generics.ListCreateAPIView):
-	queryset = Reservation.objects.all()
+	#queryset = Reservation.objects.all()
 	serializer_class = ReservationSerializer
 	
+	def get_queryset(self):
+		tenant = self.request.user
+		return Reservation.objects.filter(tenant=tenant)
+
 	def perform_create(self, serializer):
 		pk = self.request.data['house']
 		house = House.objects.get(pk=pk)
