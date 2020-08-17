@@ -17,6 +17,8 @@ import UserEdit from './components/User/UserEdit.vue'
 
 import Reservation from './components/Reservation/Reservation.vue'
 
+import ReviewAdd from './components/Review/ReviewAdd.vue'
+
 import store from './store/index.js'
 
 import 'bootstrap/dist/css/bootstrap.css'
@@ -97,9 +99,15 @@ const routes = [
 		props: true
 	},
 	{
-		path: '/reservation/:id',
+		path: '/reservation',
 		name: 'reservation',
 		component: Reservation,
+		props: true
+	},
+	{
+		path: '/review/',
+		name: 'review',
+		component: ReviewAdd,
 		props: true
 	},
 
