@@ -13,7 +13,8 @@ const state = {
 	},
 	isLoggedIn: false,
 	owner: '',
-	reservations: [] 
+	reservations: [],
+	token: '' 
 }
 
 const mutations = {
@@ -34,6 +35,9 @@ const mutations = {
 	},
 	UPDATE_RESERVATIONS(state,payload) {
 		state.reservations = payload
+	},
+	UPDATE_TOKEN(state,payload) {
+		state.token = payload
 	},
 
 }
@@ -57,19 +61,15 @@ const actions = {
 		commit('iS_NOT_LOGGED_IN')
 	},
 	getReservations ({ commit }) {
-		axios.get('http://127.0.0.1:8000/api/v1/reservations/',
-			{headers: {'Authorization': 'JWT ' + this.tuser.token}}  
+		axios
+			.get('http://127.0.0.1:8000/api/v1/reservations/',
+			{headers: {'Authorization': 'JWT ' + state.tuser.token}}  
 		)
-		.then((response) => {
-		commit('UPDATE_RESERVATIONS', response.data)
+			.then((response) => {commit('UPDATE_RESERVATIONS',response.data)
 		});
-		axios.catch((err) => {
-         //handle error
-           console.log(err.response.data);
-           });
 	},
-
 }
+	
 
 const getters = {
 	houses: 	  state => state.houses,

@@ -2,10 +2,10 @@
    <div>
 <h1 class="ti"> My reservations </h1>
  <b-list-group v-for="reservation in reservations" :key="reservation.id">
-   <b-list-group-item> 
-              cost :{{ reservation.cost }}
-              days: {{ reservation.days}}
-              house: {{ reservation.house }}
+   <b-list-group-item variant="info"> 
+              <b>House:</b> {{ reservation.house }}
+              <b>Days: </b> {{ reservation.days}}
+              <b>Cost: </b> {{ reservation.cost }}
    </b-list-group-item>
    
  </b-list-group>
@@ -37,8 +37,11 @@ export default {
       .get('http://127.0.0.1:8000/api/v1/reservations/',
        {headers: {'Authorization': 'JWT ' + this.tuser.token}}  
       )
-      .then(response => (this.reservations = response.data))
-  },
+      .then(response => (this.reservations = response.data)),
+    
+     this.$store.dispatch('getReservations');    
+
+    },
   
 
 }
