@@ -18,26 +18,21 @@
         ></b-form-input>
       </b-form-group>
 
-
-       <b-form-group
-        id="input-group-1"
-        label="Your review:"
-        label-for="input-1"
-      >
-        <b-form-input
-          id="input-1"
-          v-model="review.content"
-          required
-          placeholder="Write your review"
-        ></b-form-input>
-      </b-form-group>
+      <b-form-textarea
+      id="textarea"
+      v-model="review.content"
+      placeholder="Write your review "
+      rows="3"
+      max-rows="6"
+    ></b-form-textarea>
+       
          Rating :
       <b-form-rating v-model="review.rating"></b-form-rating> 
         
 
           <b-button  v-on:click="onSubmit" variant="success">Submit</b-button>
-        
           </b-form>
+
           </b-container>
         </div>
     </div>
