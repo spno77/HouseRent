@@ -6,11 +6,12 @@ from django.contrib.auth import get_user_model
 class HouseSerializer(serializers.ModelSerializer):
 	
 	host = serializers.PrimaryKeyRelatedField(source='host.username',queryset=get_user_model().objects.all())
+	reviews = serializers.StringRelatedField(many=True)
 
 	class Meta:
 		model = House
 		fields = ['id','title','description','cost','rooms','garage',
-		'wifi','aircondition','image','host']
+		'wifi','aircondition','image','host','reviews',]
 
 	def update(self,instance,validated_data):
 		instance.id    = validated_data.get('id', instance.id)

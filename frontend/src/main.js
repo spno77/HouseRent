@@ -19,8 +19,8 @@ import Reservation from './components/Reservation/Reservation.vue'
 import ReservationDetail from './components/Reservation/ReservationDetail.vue'
 import ReservationList from './components/Reservation/ReservationList.vue'
 
-
 import ReviewAdd from './components/Review/ReviewAdd.vue'
+import ReviewList from './components/Review/ReviewList.vue'
 
 import store from './store/index.js'
 
@@ -125,6 +125,13 @@ const routes = [
 		component: ReviewAdd,
 		props: true
 	},
+	{
+		path: '/review/list',
+		name: 'reviewlist',
+		component: ReviewList,
+		props: true
+	},
+	
 
 ]
 

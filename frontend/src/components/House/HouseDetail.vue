@@ -14,6 +14,7 @@
 		</div>
 		
 		<div class="imgButton">
+      <router-link :to="{name: 'reviewlist', params: { id: this.idd }}" class="btn btn-warning">Show Reviews</router-link>
       <div v-if="isLoggedIn===true && house.host === tuser.user.username">
         <router-link :to="{name: 'edit', params: { id: this.idd }}" class="btn btn-secondary">Edit</router-link>
         <router-link :to="{name: 'delete', params: { id: this.idd }}" class="btn btn-danger">Delete</router-link>
