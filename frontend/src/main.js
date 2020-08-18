@@ -108,7 +108,7 @@ const routes = [
 		props: true
 	},
 	{
-		path: '/reservation/detail',
+		path: '/reservation/:id',
 		name: 'reservationdetail',
 		component: ReservationDetail,
 		props: true

@@ -6,6 +6,7 @@
               <b>House:</b> {{ reservation.house }}
               <b>Days: </b> {{ reservation.days}}
               <b>Cost: </b> {{ reservation.cost }}
+              <router-link :to="{name: 'reservationdetail' ,params: { id: reservation.id }}" class="btn btn-success">Details</router-link>
    </b-list-group-item>
    
  </b-list-group>
@@ -61,7 +62,8 @@ export default {
 
   color: lightblue;
   text-align: center;
-
 }
+
+
 
 </style>

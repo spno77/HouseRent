@@ -1,52 +1,43 @@
 <template>
     <div>
-      <app />
         <div>
-          <h1 class="ti">   Reserve House  </h1>
+          <h1 class="ti">   Add a review  </h1>
           <b-container>   
           <b-form  v-if="show">
           
            <b-form-group
         id="input-group-1"
-        label="House Title:"
+        label="house name:"
         label-for="input-1"
       >
         <b-form-input
           id="input-1"
-          v-model="house.title"
+          v-model="reservation.house"
           required
-          placeholder="Enter title"
+          placeholder="review title"
         ></b-form-input>
       </b-form-group>
 
-          <b-form-group
-            id="input-group-1"
-            label="Cost:"
-            label-for="input-1"
-          >
-            <b-form-input
-              id="input-1"
-              type="number"
-              v-model="house.cost"
-              required
-              placeholder="Enter cost"
-            ></b-form-input>
-          </b-form-group>
 
-          <b-form-group id="input-group-2" label="Days:" label-for="input-2">
-            <b-form-input
-              id="input-2"
-              type="number"
-              v-model="reservation.days"
-              required
-              placeholder="Enter days"
-            ></b-form-input>
-          </b-form-group>
+       <b-form-group
+        id="input-group-1"
+        label="Your review:"
+        label-for="input-1"
+      >
+        <b-form-input
+          id="input-1"
+          v-model="review.content"
+          required
+          placeholder="Write your review"
+        ></b-form-input>
+      </b-form-group>
+         Rating :
+      <b-form-rating v-model="review.rating"></b-form-rating> 
+        
 
           <b-button  v-on:click="onSubmit" variant="success">Submit</b-button>
         
           </b-form>
-            <h1> Cost is : {{this.house.cost * this.reservation.days}} $ </h1>
           </b-container>
         </div>
     </div>
@@ -56,7 +47,67 @@
 
 
 <script>
+ import axios from 'axios';
+  import { mapGetters } from 'vuex';
+  import { mapActions } from 'vuex';
 
+  export default {
+    name: 'ReviewAdd',
+    
+    data() {
+      return {
+        idd: this.$route.params.id,
+        reservation: {},
+        show: true,
+        review: {
+          content: '',
+          rating :  null,
+        }
+      }
+    },
+    computed:{
+      ...mapGetters([
+        'tuser'
+      ])
+     },
+
+    mounted() {
+        axios
+          .get('http://127.0.0.1:8000/api/v1/reservations/'+ this.idd,
+          {headers: {'Authorization': 'JWT ' + this.tuser.token}}  
+          )
+          .then( response => {
+            this.reservation = response.data
+           })
+          .catch((err) => {
+             console.log(err.response.data);
+           });
+    }, 
+
+    methods: {
+      
+      onSubmit(){
+        axios
+          .post('http://127.0.0.1:8000/api/v1/reviews/',{
+            content:      this.review.content,
+            rating:       this.review.rating,
+            reviewer:     this.tuser.user.id,
+            reservation:  this.reservation.id 
+          },
+           {headers: {'Authorization': 'JWT ' + this.tuser.token}}  
+          )
+          .catch((err) => {
+             console.log(err.response.data);
+           });
+      },
+      
+      getDate(){
+        return new Date();
+      }
+  
+    },
+  
+}
 
 </script>
 
