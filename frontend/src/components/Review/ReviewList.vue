@@ -4,7 +4,8 @@
        <b-list-group v-for="review in reviews" :key="review.id">
           <b-list-group-item variant="secondary">
             {{ review.content }}<br>
-            Rating: <b>{{ review.rating }}</b>
+            Rating: <b>{{ review.rating }}</b><br>
+            <i> Created: {{ review.date_created }} </i>
           </b-list-group-item>
        </b-list-group>
   </div>
