@@ -1,9 +1,10 @@
 <template>
   <div>
       <h1 class="ti"> Reviews </h1>
-       <b-list-group v-for="review in reviews" :key="review">
+       <b-list-group v-for="review in reviews" :key="review.id">
           <b-list-group-item variant="secondary">
-            {{ review }}
+            {{ review.content }}<br>
+            Rating: <b>{{ review.rating }}</b>
           </b-list-group-item>
        </b-list-group>
   </div>

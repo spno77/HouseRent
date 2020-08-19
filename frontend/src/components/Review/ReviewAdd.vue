@@ -87,7 +87,8 @@
             content:      this.review.content,
             rating:       this.review.rating,
             reviewer:     this.tuser.user.id,
-            reservation:  this.reservation.id 
+            reservation:  this.reservation.id,
+            house:        1,  
           },
            {headers: {'Authorization': 'JWT ' + this.tuser.token}}  
           )

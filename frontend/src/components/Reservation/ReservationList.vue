@@ -3,10 +3,13 @@
 <h1 class="ti"> My reservations </h1>
  <b-list-group v-for="reservation in reservations" :key="reservation.id">
    <b-list-group-item variant="info"> 
-              <b>House:</b> {{ reservation.house }}
-              <b>Days: </b> {{ reservation.days}}
-              <b>Cost: </b> {{ reservation.cost }}
-              <router-link :to="{name: 'reservationdetail' ,params: { id: reservation.id }}" class="btn btn-success">Details</router-link>
+             <div class="test"> 
+              <b>House:</b> {{ reservation.house }} <br>
+              <b>Days: </b> {{ reservation.days }}
+              <b>Cost: </b> {{ reservation.cost }} <b> $ </b>
+              <router-link :to="{name: 'reservationdetail' ,params: { id: reservation.id }}" class="le btn btn-success">Details</router-link>
+             </div>
+              
    </b-list-group-item>
    
  </b-list-group>
@@ -64,6 +67,12 @@ export default {
   text-align: center;
 }
 
+.test{
+  margin-left: 10px;
+}
 
+.le{
+  margin-left: 10px;
+}
 
 </style>
