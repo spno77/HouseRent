@@ -24,7 +24,7 @@
         ></b-form-input>
       </b-form-group>
 
-      <b-button  @click="loginUser(user)" variant="primary"> Login </b-button>
+      <b-button  @click="loginUser(user),homepage()" variant="primary"> Login </b-button>
        
     </b-form>
      
@@ -63,12 +63,10 @@
 
     methods: {
       ...mapActions(['loginUser']),
-      
-      findId(){
-        this.id = this.tuser.user.id
-        return this.id 
-      }
 
+      homepage(){
+         this.$router.push('/')
+      },
     }
   
 }

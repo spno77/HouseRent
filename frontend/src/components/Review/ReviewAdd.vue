@@ -95,12 +95,10 @@
           .catch((err) => {
              console.log(err.response.data);
            });
+
+        this.$router.push('/')
       },
       
-      getDate(){
-        return new Date();
-      }
-  
     },
   
 }
