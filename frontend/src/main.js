@@ -8,6 +8,8 @@ import HouseList   from './components/House/HouseList.vue'
 import HouseDelete   from './components/House/HouseDelete.vue'
 import HouseCreate   from './components/House/HouseCreate.vue'
 import HouseEdit   from './components/House/HouseEdit.vue'
+import HouseSearch   from './components/House/HouseSearch.vue'
+
 import Header   from './components/Header.vue'
 
 import RegisterUser from './components/User/RegisterUser.vue'
@@ -78,6 +80,12 @@ const routes = [
 		props: true
 	},
 	{
+		path: '/houses_search/:id/',
+		name: 'house_search',
+		component: HouseSearch,
+		props: true
+	},
+	{
 		path: '/register',
 		name: 'register',
 		component: RegisterUser,
@@ -131,7 +139,6 @@ const routes = [
 		component: ReviewList,
 		props: true
 	},
-	
 
 ]
 

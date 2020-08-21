@@ -4,14 +4,16 @@ from django.contrib.auth import get_user_model
 
 class House(models.Model):
 
-	title  = models.CharField(max_length=20)
-	description = models.CharField(max_length=100)
-	cost = models.FloatField()
-	rooms = models.IntegerField()
-	garage = models.BooleanField(default=False)
-	wifi = models.BooleanField(default=False)
+	title        = models.CharField(max_length=20)
+	description  = models.CharField(max_length=100)
+	cost         = models.FloatField()
+	rooms        = models.IntegerField()
+	garage       = models.BooleanField(default=False)
+	wifi         = models.BooleanField(default=False)
 	aircondition = models.BooleanField(default=False)
-	image = models.ImageField(default='default.jpg',upload_to='images')
+	image        = models.ImageField(default='default.jpg',upload_to='images')
+	city         = models.CharField(max_length=30)
+	country      = models.CharField(max_length=20)
 
 	host = models.ForeignKey(get_user_model(),on_delete=models.CASCADE,related_name='host')
 

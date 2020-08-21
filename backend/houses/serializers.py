@@ -12,7 +12,7 @@ class HouseSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = House
 		fields = ['id','title','description','cost','rooms','garage',
-		'wifi','aircondition','image','host','reviews',]
+		'wifi','aircondition','image','city','country','host','reviews',]
 
 	def update(self,instance,validated_data):
 		instance.id    = validated_data.get('id', instance.id)
@@ -23,6 +23,8 @@ class HouseSerializer(serializers.ModelSerializer):
 		instance.garage = validated_data.get('garage', instance.garage)
 		instance.wifi = validated_data.get('wifi', instance.wifi)
 		instance.aircondition = validated_data.get('aircondition', instance.aircondition)
+		instance.city = validated_data.get('city', instance.city)
+		instance.country = validated_data.get('country', instance.country)
 		instance.image = validated_data.get('image', instance.image)
 		instance.host = validated_data.get('host.username',instance.host)
 		instance.save()

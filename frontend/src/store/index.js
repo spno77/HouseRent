@@ -12,9 +12,9 @@ const state = {
 		password: '',
 	},
 	isLoggedIn: false,
-	owner: '',
 	reservations: [],
-	token: '' 
+	token: '',
+	search_term: '', 
 }
 
 const mutations = {
@@ -39,6 +39,9 @@ const mutations = {
 	UPDATE_TOKEN(state,payload) {
 		state.token = payload
 	},
+	UPDATE_SEARCH_TERM(state,payload) {
+		state.search_term = payload
+	},
 
 }
 
@@ -46,6 +49,12 @@ const actions = {
 	getHouses ({ commit }) {
 		axios.get('http://127.0.0.1:8000/api/v1/houses/?ordering=cost').then((response) => {
 		commit('UPDATE_HOUSES', response.data)
+		});
+	},
+	searchHouses({ commit },search_term) {
+		axios.get('http://127.0.0.1:8000/api/v1/houses/?search='+ search_term)
+		.then((response) => {
+			commit('UPDATE_HOUSES', response.data)
 		});
 	},
 	loginUser ({ commit }, user) {
@@ -68,6 +77,9 @@ const actions = {
 			.then((response) => {commit('UPDATE_RESERVATIONS',response.data)
 		});
 	},
+	updateSearchTerm({ commit },search_term) {
+		commit('UPDATE_SEARCH_TERM',search_term);
+	},
 }
 	
 
@@ -75,7 +87,8 @@ const getters = {
 	houses: 	  state => state.houses,
 	tuser:  	  state => state.user,
 	isLoggedIn:   store => state.isLoggedIn,
-	reservations: store => state.reservations
+	reservations: store => state.reservations,
+	search_term:  store => state.search_term,
 }
 
 

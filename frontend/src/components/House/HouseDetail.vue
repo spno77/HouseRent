@@ -2,7 +2,9 @@
 <div>
 	<app />
 		<h1> <b>{{ house.title }} </b></h1>
-		<p>{{ house.description }} </p>
+		<p> {{ house.description }} </p>
+    <p> Country: {{ house.country }} </p>
+    <p> City:    {{ house.city }} </p>
 		<p> cost : {{ house.cost }} $ </p>
 		<p> Garage:{{ house.garage }} </p>
 		<p> wifi:{{ house.wifi }} </p>

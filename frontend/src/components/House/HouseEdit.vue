@@ -27,6 +27,24 @@
         ></b-form-input>
       </b-form-group>
 
+       <b-form-group id="input-group-2" label="Country:" label-for="input-2">
+        <b-form-input
+          id="input-2"
+          v-model="house.country"
+          required
+          placeholder="Enter country"
+        ></b-form-input>
+      </b-form-group>
+     
+      <b-form-group id="input-group-2" label="City:" label-for="input-2">
+        <b-form-input
+          id="input-2"
+          v-model="house.city"
+          required
+          placeholder="Enter city"
+        ></b-form-input>
+      </b-form-group>
+
       <b-form-group id="input-group-2" label="Rooms:" label-for="input-2">
         <b-form-input
           id="input-2"
@@ -103,6 +121,8 @@
           garage: true,
           wifi: true,
           aircondition: true,
+          country: '',
+          city: '',
           file: null,
         },
         show: true
@@ -138,8 +158,11 @@
             garage:       this.house.garage,
             wifi:         this.house.wifi,
             aircondition: this.house.aircondition,
+            city:         this.house.city,
+            country:      this.house.country,
             host:         this.tuser.user.id
           })
+          
         this.$router.push('/')
       },
       
