@@ -14,7 +14,11 @@ const state = {
 	isLoggedIn: false,
 	reservations: [],
 	token: '',
-	search_term: '', 
+	
+	search_term: {
+		country: '',
+		cost: '',
+	}, 
 }
 
 const mutations = {
@@ -52,7 +56,7 @@ const actions = {
 		});
 	},
 	searchHouses({ commit },search_term) {
-		axios.get('http://127.0.0.1:8000/api/v1/houses/?search='+ search_term)
+		axios.get('http://127.0.0.1:8000/api/v1/houses/?country='+ search_term.country +'&cost='+search_term.cost)
 		.then((response) => {
 			commit('UPDATE_HOUSES', response.data)
 		});

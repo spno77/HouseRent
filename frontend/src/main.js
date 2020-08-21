@@ -9,6 +9,7 @@ import HouseDelete   from './components/House/HouseDelete.vue'
 import HouseCreate   from './components/House/HouseCreate.vue'
 import HouseEdit   from './components/House/HouseEdit.vue'
 import HouseSearch   from './components/House/HouseSearch.vue'
+import HouseSearchForm   from './components/House/HouseSearchForm.vue'
 
 import Header   from './components/Header.vue'
 
@@ -80,9 +81,15 @@ const routes = [
 		props: true
 	},
 	{
-		path: '/houses_search/:id/',
+		path: '/houses_search',
 		name: 'house_search',
 		component: HouseSearch,
+		props: true
+	},
+	{
+		path: '/houses/search/form',
+		name: 'house_search_form',
+		component: HouseSearchForm,
 		props: true
 	},
 	{

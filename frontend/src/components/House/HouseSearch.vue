@@ -47,24 +47,26 @@ export default {
   data(){
    return {
      idd : this.$route.params.id,
-   }
+     
+    
+    }
 
   },
 
   computed:{
     ...mapGetters([
-        'houses'
+        'houses',
+        'search_term'
       ])
   },
 
   mounted(){
-    
-    this.$store.dispatch('searchHouses',"small"); 
+    this.$store.dispatch('searchHouses',this.search_term);
+     
   },
-  
-  
+ 
+ } 
 
-}
 
 </script>
 
