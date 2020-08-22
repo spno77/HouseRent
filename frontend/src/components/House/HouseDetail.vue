@@ -10,7 +10,13 @@
 		<p> wifi:{{ house.wifi }} </p>
 		<p> Aircondition:{{ house.aircondition }} </p>
 
-    <div class="row">
+   <div v-if="house.house_img.length===1" class="imgContainer">
+    <div>
+      <img :src="house.house_img[0].image">
+    </div>
+   </div> 
+
+    <div v-else class="row">
       <div  class="column" v-for="house in house.house_img" :key="house.id">
       <div class="imgContainer">
        <div>

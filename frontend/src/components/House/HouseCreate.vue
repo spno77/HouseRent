@@ -95,17 +95,17 @@
     </b-form-group>
 
      <b-form-file
+     @change="onFileSelected"
       v-model="house.file"
-      :state="Boolean(file)"
       placeholder="Choose a file or drop it here..."
       drop-placeholder="Drop file here..."
     ></b-form-file>
-    <div class="mt-3">Selected file: {{ file ? file.name : '' }}</div>
+    
 
 
-      <b-button  v-on:click="onSubmit" variant="primary">Submit</b-button>
+      <b-button  v-on:click="onSubmit(), onUpload()" variant="primary">Submit</b-button>
     </b-form>
-   
+         
      </b-container>
       </div>
     </div>
@@ -144,7 +144,24 @@
     },
 
     methods: {
-      onSubmit() {
+      onFileSelected(event){
+        this.file = event.target.files[0]
+      },
+     
+      onUpload(){
+        const fd = new FormData();
+        fd.append('image',this.house.file,this.house.file.name)
+        fd.append('house',21)
+        axios
+          .post('http://127.0.0.1:8000/api/v1/houses/images',
+            fd
+            )
+          .catch((err) => {
+             console.log(err.response.data);
+           });
+      },
+
+      onSubmit(value) {
         axios
           .post('http://127.0.0.1:8000/api/v1/houses/',{
             title:        this.house.title,
@@ -163,8 +180,7 @@
           .catch((err) => {
              console.log(err.response.data);
            });
-        
-        this.$router.push('/')
+        //this.$router.push('/')
 
       },
 
