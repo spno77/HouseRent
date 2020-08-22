@@ -11,11 +11,19 @@ class House(models.Model):
 	garage       = models.BooleanField(default=False)
 	wifi         = models.BooleanField(default=False)
 	aircondition = models.BooleanField(default=False)
-	image        = models.ImageField(default='default.jpg',upload_to='images')
 	city         = models.CharField(max_length=30)
 	country      = models.CharField(max_length=20)
 
 	host = models.ForeignKey(get_user_model(),on_delete=models.CASCADE,related_name='host')
+
+	def __str__(self):
+		return self.title
+
+class HouseImage(models.Model):
+
+
+	image        = models.ImageField(default='default.jpg',upload_to='images')
+	house        = models.ForeignKey(House,on_delete=models.CASCADE,related_name='house_img')
 
 	def save(self,*args,**kwargs):
 		super().save(*args,**kwargs)
@@ -27,6 +35,6 @@ class House(models.Model):
 			img.thumbnail(output_size)
 			img.save(self.image.path)
 
-
 	def __str__(self):
-		return self.title
+		return self.image
+	

@@ -1,18 +1,29 @@
 from rest_framework import serializers
 
-from .models import House
+from .models import House,HouseImage
 from django.contrib.auth import get_user_model
 from reviews.serializers import ReviewSerializer
 
+
+class HouseImageSerializer(serializers.ModelSerializer):
+
+	house = serializers.PrimaryKeyRelatedField(source='house.id',queryset=House.objects.all())
+
+	class Meta:
+		model = HouseImage
+		fields = ['house','image']
+
+
 class HouseSerializer(serializers.ModelSerializer):
 	
-	host = serializers.PrimaryKeyRelatedField(source='host.username',queryset=get_user_model().objects.all())
+	host    = serializers.PrimaryKeyRelatedField(source='host.username',queryset=get_user_model().objects.all())
 	reviews = ReviewSerializer(many=True,read_only=True)
+	house_img  = HouseImageSerializer(many=True,read_only=True)
 
 	class Meta:
 		model = House
 		fields = ['id','title','description','cost','rooms','garage',
-		'wifi','aircondition','image','city','country','host','reviews',]
+		'wifi','aircondition','city','country','host','reviews','house_img']
 
 	def update(self,instance,validated_data):
 		instance.id    = validated_data.get('id', instance.id)
@@ -25,7 +36,7 @@ class HouseSerializer(serializers.ModelSerializer):
 		instance.aircondition = validated_data.get('aircondition', instance.aircondition)
 		instance.city = validated_data.get('city', instance.city)
 		instance.country = validated_data.get('country', instance.country)
-		instance.image = validated_data.get('image', instance.image)
+		#instance.image = validated_data.get('image', instance.image)
 		instance.host = validated_data.get('host.username',instance.host)
 		instance.save()
 		return instance

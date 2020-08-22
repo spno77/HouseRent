@@ -18,7 +18,9 @@ const state = {
 	search_term: {
 		country: '',
 		cost: '',
-	}, 
+	},
+
+	images:[] , 
 }
 
 const mutations = {
@@ -26,6 +28,10 @@ const mutations = {
 		state.houses = payload
 	},
 
+	UPDATE_HOUSE_IMAGES (state,payload) {
+		state.images = payload
+	},
+	
 	LOGIN_USER(state,payload) {
 		state.user = payload
 	},
@@ -53,6 +59,11 @@ const actions = {
 	getHouses ({ commit }) {
 		axios.get('http://127.0.0.1:8000/api/v1/houses/?ordering=cost').then((response) => {
 		commit('UPDATE_HOUSES', response.data)
+		});
+	},
+	getHousesImages ({ commit }) {
+		axios.get('http://127.0.0.1:8000/api/v1/houses/images').then((response) => {
+		commit('UPDATE_HOUSE_IMAGES', response.data)
 		});
 	},
 	searchHouses({ commit },search_term) {
@@ -89,6 +100,7 @@ const actions = {
 
 const getters = {
 	houses: 	  state => state.houses,
+	house_images: state => state.images,
 	tuser:  	  state => state.user,
 	isLoggedIn:   store => state.isLoggedIn,
 	reservations: store => state.reservations,

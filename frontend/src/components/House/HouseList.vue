@@ -11,7 +11,7 @@
           <b-card
             bg-variant="dark" text-variant="white"
             :title="house.title"
-            :img-src ="house.image" 
+            :img-src ="house.house_img[0].image" 
             img-alt="Image"
             img-top
             tag="article"
@@ -46,12 +46,15 @@ export default {
  
   computed:{
     ...mapGetters([
-        'houses'
+        'houses',
+        //'house_images'
       ])
   },
 
   mounted(){
-    this.$store.dispatch('getHouses'); 
+    this.$store.dispatch('getHouses');
+    //this.$store.dispatch('getHousesImages');
+
   }
 
 }

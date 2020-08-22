@@ -13,7 +13,7 @@ class Review(models.Model):
 
 	reservation  = models.OneToOneField('reservations.Reservation',on_delete=models.CASCADE,related_name='reservation') 
 	reviewer     = models.ForeignKey(get_user_model(),on_delete=models.CASCADE,related_name='reviewer')
-	house        =  models.ForeignKey('houses.House',on_delete=models.CASCADE,related_name='reviews')
+	house        = models.ForeignKey('houses.House',on_delete=models.CASCADE,related_name='reviews')
 
 	def __str__(self):
 		return self.content

@@ -10,11 +10,16 @@
 		<p> wifi:{{ house.wifi }} </p>
 		<p> Aircondition:{{ house.aircondition }} </p>
 
-	<div class="imgContainer">
-		<div>
-			<img :src="house.image">
-		</div>
-		
+    <div class="row">
+      <div  class="column" v-for="house in house.house_img" :key="house.id">
+      <div class="imgContainer">
+       <div>
+        <img class ="img" :src="house.image" style="width:95%">
+      </div>
+    </div>
+     </div>
+ </div>
+
 		<div class="imgButton">
       <router-link :to="{name: 'reviewlist', params: { id: this.idd }}" class="btn btn-warning">Show Reviews</router-link>
       <div v-if="isLoggedIn===true && house.host === tuser.user.username">
@@ -23,9 +28,9 @@
        </div>
 			<router-link v-if="isLoggedIn===true && house.host !== tuser.user.username" :to="{name: 'reservation', params: { id: this.idd }}" class="btn btn-success">Reserve</router-link>
 		</div>
-
+ 
 	</div>	
-</div>
+
 </template>
 
 <script>
@@ -59,9 +64,25 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
   .imgButton{
     text-align:center;
     margin-top:5px;
 }
+
+.row {
+  display: flex;
+}
+
+.column {
+  flex: 20.33%;
+}
+
+.img {
+    float: left;
+    width:  200px;
+    height: 200px;
+    object-fit: cover;
+}
+
 </style>
