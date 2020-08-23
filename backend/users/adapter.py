@@ -10,7 +10,7 @@ class CustomAccountAdapter(DefaultAccountAdapter):
 		user.firstname  = data.get('firstname')
 		user.lastname   = data.get('lastname')
 		user.phone      = data.get('phone')
-		#user.image      = data.get('image')
+		user.image      = data.get('image')
 		user.role       = data.get('role')
 
 		user.save()

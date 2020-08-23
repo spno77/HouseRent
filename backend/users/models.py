@@ -55,7 +55,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 	firstname =   models.CharField(max_length=30,null=False)
 	lastname  =   models.CharField(max_length=30,null=False)
 	phone     =   models.CharField(max_length=12,null=False)
-	image     =   models.ImageField(default='default.jpg',upload_to='images')
+	image     =   models.ImageField(default='blank-user.png',upload_to='images')
 	role      =   models.CharField(max_length=10,choices=ROLE_CHOICES,default=GUEST)
 	
 	
