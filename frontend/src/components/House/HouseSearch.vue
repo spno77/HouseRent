@@ -11,7 +11,7 @@
           <b-card
             bg-variant="dark" text-variant="white"
             :title="house.title"
-            :img-src ="house.house_img[0].image" 
+            :img-src ="house.image" 
             img-alt="Image"
             img-top
             tag="article"

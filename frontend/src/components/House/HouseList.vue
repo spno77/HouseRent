@@ -8,10 +8,10 @@
   
        
         <b-col md="3" v-for="house in houses" :key="house.id">
-          <b-card
+          <b-card 
             bg-variant="dark" text-variant="white"
             :title="house.title"
-            :img-src ="house.house_img[0].image" 
+            :img-src ="house.image" 
             img-alt="Image"
             img-top
             tag="article"
@@ -84,7 +84,7 @@ export default {
     float: left;
     width:  300px;
     height: 300px;
-    background-size: cover;
+    object-fit: cover;
 }
 
 </style>

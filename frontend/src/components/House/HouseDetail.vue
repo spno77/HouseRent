@@ -10,21 +10,13 @@
 		<p> wifi:{{ house.wifi }} </p>
 		<p> Aircondition:{{ house.aircondition }} </p>
 
-   <div v-if="house.house_img.length===1" class="imgContainer">
+   <div class="imgContainer">
     <div>
-      <img :src="house.house_img[0].image">
+      <img :src="house.image">
     </div>
    </div> 
 
-    <div v-else class="row">
-      <div  class="column" v-for="house in house.house_img" :key="house.id">
-      <div class="imgContainer">
-       <div>
-        <img class ="img" :src="house.image" style="width:95%">
-      </div>
-    </div>
-     </div>
- </div>
+   
 
 		<div class="imgButton">
       <router-link :to="{name: 'reviewlist', params: { id: this.idd }}" class="btn btn-warning">Show Reviews</router-link>

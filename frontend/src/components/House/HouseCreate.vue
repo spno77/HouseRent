@@ -96,14 +96,15 @@
 
      <b-form-file
      @change="onFileSelected"
-      v-model="house.file"
-      placeholder="Choose a file or drop it here..."
-      drop-placeholder="Drop file here..."
+      v-model="house.image"
+      placeholder="Choose an image or drop it here..."
+      drop-placeholder="Drop image here..."
     ></b-form-file>
     
 
 
-      <b-button  v-on:click="onSubmit(), onUpload()" variant="primary">Submit</b-button>
+      <b-button  v-on:click="onSubmit" variant="primary">Submit</b-button>
+     
     </b-form>
          
      </b-container>
@@ -130,7 +131,7 @@
           aircondition: true,
           country: '',
           city: '',
-          file: null,
+          image: null,
         },
 
         show: true
@@ -145,50 +146,35 @@
 
     methods: {
       onFileSelected(event){
-        this.file = event.target.files[0]
+        this.image = event.target.files[0]
       },
      
-      onUpload(){
-        const fd = new FormData();
-        fd.append('image',this.house.file,this.house.file.name)
-        fd.append('house',21)
-        axios
-          .post('http://127.0.0.1:8000/api/v1/houses/images',
-            fd
-            )
-          .catch((err) => {
-             console.log(err.response.data);
-           });
-      },
+      onSubmit() {
+        const fd = new FormData()
 
-      onSubmit(value) {
+        fd.append('title'       ,this.house.title)
+        fd.append('description' ,this.house.description)
+        fd.append('cost'        ,this.house.cost)
+        fd.append('rooms'       ,this.house.rooms)
+        fd.append('garage'      ,this.house.garage)
+        fd.append('wifi'        ,this.house.wifi)
+        fd.append('aircondition',this.house.aircondition)
+        fd.append('country'     ,this.house.country)
+        fd.append('city'        ,this.house.city)
+        fd.append('host'        ,this.tuser.user.id)
+        fd.append('image'       ,this.house.image,this.house.image.name)
+        
         axios
-          .post('http://127.0.0.1:8000/api/v1/houses/',{
-            title:        this.house.title,
-            description:  this.house.description,
-            cost:         this.house.cost,
-            rooms:        this.house.rooms,
-            garage:       this.house.garage,
-            wifi:         this.house.wifi,
-            aircondition: this.house.aircondition,
-            country:      this.house.country,
-            city:         this.house.city,
-            host:         this.tuser.user.id
-          },
+          .post('http://127.0.0.1:8000/api/v1/houses/',fd,
            {headers: {'Authorization': 'JWT ' + this.tuser.token}}  
           )
           .catch((err) => {
              console.log(err.response.data);
            });
-        //this.$router.push('/')
-
+        this.$router.push('/')
+       
       },
-
-    onFileChanged(event){
-      this.file = event.target.files[0]
-    },
-
-      
+       
     }
   }
 </script>
@@ -201,6 +187,13 @@
   color: lightblue;
   text-align: center;
 
+}
+
+.img {
+    float: left;
+    width:  100px;
+    height: 100px;
+    object-fit: cover;
 }
 
 </style>

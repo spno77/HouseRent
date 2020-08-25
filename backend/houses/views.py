@@ -2,8 +2,8 @@ from django.shortcuts import render
 
 from rest_framework import generics,filters
 
-from .models import House,HouseImage
-from .serializers import HouseSerializer,HouseImageSerializer
+from .models import House
+from .serializers import HouseSerializer
 
 from django_filters.rest_framework import DjangoFilterBackend
 
@@ -26,7 +26,7 @@ class HouseDetail(generics.RetrieveUpdateDestroyAPIView):
 	queryset = House.objects.all()
 	serializer_class = HouseSerializer
 
-
+'''
 class HouseImageList(generics.ListCreateAPIView):
 	queryset = HouseImage.objects.all()
 	serializer_class = HouseImageSerializer
@@ -45,3 +45,4 @@ class HouseImageList(generics.ListCreateAPIView):
 class HouseImageDetail(generics.RetrieveUpdateDestroyAPIView):
 	queryset = HouseImage.objects.all()
 	serializer_class = HouseImageSerializer
+'''

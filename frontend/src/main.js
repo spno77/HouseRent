@@ -10,6 +10,7 @@ import HouseCreate   from './components/House/HouseCreate.vue'
 import HouseEdit   from './components/House/HouseEdit.vue'
 import HouseSearch   from './components/House/HouseSearch.vue'
 import HouseSearchForm   from './components/House/HouseSearchForm.vue'
+import AddHouseImages    from  './components/House/AddHouseImages.vue'
 
 import Header   from './components/Header.vue'
 
@@ -90,6 +91,12 @@ const routes = [
 		path: '/houses/search/form',
 		name: 'house_search_form',
 		component: HouseSearchForm,
+		props: true
+	},
+	{
+		path: '/houses/addimages/:id',
+		name: 'addimages',
+		component: AddHouseImages,
 		props: true
 	},
 	{
