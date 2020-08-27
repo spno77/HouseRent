@@ -23,21 +23,23 @@ class HouseSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = House
 		fields = ['id','title','description','cost','rooms','garage',
-		'wifi','aircondition','city','country','image','host','reviews',]
+		'wifi','aircondition','city','country','image','lon','lat','host','reviews',]
 
 	def update(self,instance,validated_data):
-		instance.id    = validated_data.get('id', instance.id)
-		instance.title = validated_data.get('title', instance.title)
-		instance.description = validated_data.get('description', instance.description)
-		instance.cost = validated_data.get('cost', instance.cost)
-		instance.rooms = validated_data.get('rooms', instance.rooms)
-		instance.garage = validated_data.get('garage', instance.garage)
-		instance.wifi = validated_data.get('wifi', instance.wifi)
+		instance.id           = validated_data.get('id', instance.id)
+		instance.title        = validated_data.get('title', instance.title)
+		instance.description  = validated_data.get('description', instance.description)
+		instance.cost         = validated_data.get('cost', instance.cost)
+		instance.rooms        = validated_data.get('rooms', instance.rooms)
+		instance.garage       = validated_data.get('garage', instance.garage)
+		instance.wifi         = validated_data.get('wifi', instance.wifi)
 		instance.aircondition = validated_data.get('aircondition', instance.aircondition)
-		instance.city = validated_data.get('city', instance.city)
-		instance.country = validated_data.get('country', instance.country)
-		instance.image = validated_data.get('image', instance.image)
-		instance.host = validated_data.get('host.username',instance.host)
+		instance.city         = validated_data.get('city', instance.city)
+		instance.country      = validated_data.get('country', instance.country)
+		instance.image        = validated_data.get('image', instance.image)
+		instance.lon          = validated_data.get('lon', instance.lon)
+		instance.lat          = validated_data.get('lat', instance.lat)
+		instance.host         = validated_data.get('host.username',instance.host)
 		instance.save()
 		return instance
 		
