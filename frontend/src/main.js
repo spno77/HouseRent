@@ -37,6 +37,11 @@ import VueAxios from 'vue-axios'
 import VueRouter from 'vue-router'
 import Vuex from 'vuex'
 
+
+import { LMap, LTileLayer, LMarker } from 'vue2-leaflet';
+import 'leaflet/dist/leaflet.css';
+
+
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 
