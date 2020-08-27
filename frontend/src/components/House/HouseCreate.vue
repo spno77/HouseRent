@@ -131,7 +131,7 @@
           aircondition: true,
           country: '',
           city: '',
-          image: null,
+          image: '',
         },
 
         show: true
@@ -189,11 +189,6 @@
 
 }
 
-.img {
-    float: left;
-    width:  100px;
-    height: 100px;
-    object-fit: cover;
-}
+
 
 </style>

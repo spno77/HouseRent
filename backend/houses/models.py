@@ -13,7 +13,7 @@ class House(models.Model):
 	aircondition = models.BooleanField(default=False)
 	city         = models.CharField(max_length=30)
 	country      = models.CharField(max_length=20)
-	image        = models.ImageField(default='default.jpg',upload_to='images')
+	image        = models.ImageField(default='default.jpg',upload_to='images',null=True)
 
 	host = models.ForeignKey(get_user_model(),on_delete=models.CASCADE,related_name='host')
 
