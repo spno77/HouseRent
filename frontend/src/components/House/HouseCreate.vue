@@ -125,9 +125,6 @@
          
      </b-container>
 
-  
-
-      
 
               <b-container>
 
@@ -196,7 +193,7 @@
       initMap() {
         this.map = L.map('map').setView([38.63, -90.23], 12);
 
-        this.markers = L.marker([38.63,-90.23]).addTo(this.map)
+        //this.markers = L.marker([38.63,-90.23]).addTo(this.map)
 
         this.tileLayer =  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
