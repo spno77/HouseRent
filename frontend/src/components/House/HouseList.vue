@@ -20,8 +20,10 @@
            >
             <b-card-text>
               <b>cost: {{ house.cost }} $ </b> <br>
-              {{house.id}}
-             
+              <b>Reviews :{{ house.reviews.length }} </b><br>
+              <div v-show="house.reviews.length > 0">
+              <b>Avg rating : :{{ avg_rating(house) }} </b>
+              </div>
               
             </b-card-text>
 
@@ -54,6 +56,21 @@ export default {
   mounted(){
     this.$store.dispatch('getHouses');
     //this.$store.dispatch('getHousesImages');
+
+  },
+
+ methods:{
+
+    avg_rating(house){
+      var total = 0;
+
+      for(var i = 0; i < house.reviews.length; i++) {
+        total += house.reviews[i].rating; 
+      }
+
+      var avg = total / house.reviews.length;
+      return avg;
+    },
 
   }
 

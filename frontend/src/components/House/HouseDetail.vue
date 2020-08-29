@@ -58,7 +58,6 @@ export default {
       map:       null,
       tileLayer: null,
       markers:   [],
-      latt:  null,
     }
   },
 

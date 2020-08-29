@@ -6,7 +6,10 @@
            <td><b> {{ review.reviewer }}:   </b> </td> {{ review.content }} <br>
             Rating: <b>{{ review.rating }}</b><br>
             <i> Created: {{ review.date_created }} </i>
+
           </b-list-group-item>
+            
+
        </b-list-group>
   </div>
 </template>
