@@ -16,6 +16,8 @@ class House(models.Model):
 	image        = models.ImageField(default='default.jpg',upload_to='images')
 	lon          = models.FloatField()
 	lat          = models.FloatField()
+	av_from      = models.DateField()
+	av_to        = models.DateField()
 
 	host = models.ForeignKey(get_user_model(),on_delete=models.CASCADE,related_name='host')
 

@@ -22,7 +22,7 @@
               <b>cost: {{ house.cost }} $ </b> <br>
               <b>Reviews :{{ house.reviews.length }} </b><br>
               <div v-show="house.reviews.length > 0">
-              <b>Avg rating : :{{ avg_rating(house) }} </b>
+              <b>Avg rating : {{ avg_rating(house) }} </b>
               </div>
               
             </b-card-text>

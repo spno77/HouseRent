@@ -70,6 +70,18 @@
         ></b-form-input>
       </b-form-group>
 
+      <div>
+        <label for="example-datepicker">Available From:</label>
+        <b-form-datepicker id="example-datepicker" v-model="house.av_from" class="mb-2"></b-form-datepicker>
+      </div>
+
+
+      <div>
+        <label for="example-datepicker2">Available To:</label>
+        <b-form-datepicker id="example-datepicker2" v-model="house.av_to" class="mb-2"></b-form-datepicker>
+      </div>
+
+
        <b-form-group
         id="input-group-1"
         label="City:"
@@ -165,6 +177,8 @@
           image: '',
           lon: '',
           lat: '',
+          av_from: '',
+          av_to: '',
         },
 
         map: null,
@@ -234,9 +248,13 @@
         fd.append('host'        ,this.tuser.user.id)
         fd.append('image'       ,this.house.image,this.house.image.name)
 
-        fd.append('lon'        ,this.house.lon)
-        fd.append('lat'        ,this.house.lat)
+        fd.append('lon'         ,this.house.lon)
+        fd.append('lat'         ,this.house.lat)
+
+        fd.append('av_from'     ,this.house.av_from)
+        fd.append('av_to'       ,this.house.av_to)
         
+
         axios
           .post('http://127.0.0.1:8000/api/v1/houses/',fd,
            {headers: {'Authorization': 'JWT ' + this.tuser.token}}  

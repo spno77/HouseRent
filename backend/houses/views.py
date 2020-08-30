@@ -6,6 +6,7 @@ from .models import House
 from .serializers import HouseSerializer
 
 from django_filters.rest_framework import DjangoFilterBackend
+from url_filter.integrations.drf import DjangoFilterBackend
 
 class HouseList(generics.ListCreateAPIView):
 	queryset = House.objects.all()
@@ -13,6 +14,7 @@ class HouseList(generics.ListCreateAPIView):
 	filter_backends = [filters.SearchFilter,filters.OrderingFilter,DjangoFilterBackend]
 	#search_fields = ['title','description']
 	filterset_fields = ['country', 'cost']
+	filter_fields = ['av_from','av_to']
 	ordering_fields = ['cost']
 
 	def perform_create(self, serializer):

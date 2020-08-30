@@ -23,7 +23,8 @@ class HouseSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = House
 		fields = ['id','title','description','cost','rooms','garage',
-		'wifi','aircondition','city','country','image','lon','lat','host','reviews',]
+		'wifi','aircondition','city','country','image','lon','lat',
+		'av_from','av_to','host','reviews',]
 
 	def update(self,instance,validated_data):
 		instance.id           = validated_data.get('id', instance.id)
