@@ -14,7 +14,7 @@ class HouseList(generics.ListCreateAPIView):
 	filter_backends = [filters.SearchFilter,filters.OrderingFilter,DjangoFilterBackend]
 	#search_fields = ['title','description']
 	#filterset_fields = ['country', 'cost']
-	filter_fields = ['av_from','av_to','cost','country']
+	filter_fields = ['av_from','av_to','city','country']
 	ordering_fields = ['cost']
 
 	def perform_create(self, serializer):

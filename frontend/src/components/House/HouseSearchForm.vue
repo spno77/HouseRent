@@ -11,13 +11,12 @@
         ></b-form-input>
       </b-form-group>
 
-     <b-form-group id="input-group-2" label="Cost per day:" label-for="input-2">
+     <b-form-group id="input-group-2" label="City name:" label-for="input-2">
         <b-form-input
           id="input-2"
-          type="number"
-          v-model="search.cost"
+          v-model="search.city"
           required
-          placeholder="Enter cost per day"
+          placeholder="Enter city name"
         ></b-form-input>
       </b-form-group>
 
@@ -25,12 +24,12 @@
   <div class="row">
       <div class="col-md-6">
         <label for="example-datepicker">Available From:</label>
-        <b-form-datepicker id="example-datepicker" v-model="search.av_from" class="mb-2"></b-form-datepicker>
+        <b-form-datepicker id="example-datepicker" v-model="search.book_from" class="mb-2"></b-form-datepicker>
       </div>
 
       <div class="col-md-6">
         <label for="example-datepicker2">Available To:</label>
-        <b-form-datepicker id="example-datepicker2" v-model="search.av_to" class="mb-2"></b-form-datepicker>
+        <b-form-datepicker id="example-datepicker2" v-model="search.book_to" class="mb-2"></b-form-datepicker>
       </div>
   </div>
 
@@ -56,9 +55,9 @@
         
         search :{  
           country: '',
-          cost: null,
-          av_from: '',
-          av_to: '',
+          city: '',
+          book_from: '',
+          book_to: '',
         },
 
         show: true
@@ -82,7 +81,7 @@
       this.file = event.target.files[0]
     },
   
-    
+
       
     }
   }

@@ -2,7 +2,7 @@
 
 from django.urls import path,include
 from . import views
-from .views import HouseList,HouseDetail,HouseSearch
+from .views import HouseList,HouseDetail
 #HouseImageList,HouseImageDetail
 
 urlpatterns = [
