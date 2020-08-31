@@ -21,6 +21,21 @@
         ></b-form-input>
       </b-form-group>
 
+
+  <div class="row">
+      <div class="col-md-6">
+        <label for="example-datepicker">Available From:</label>
+        <b-form-datepicker id="example-datepicker" v-model="search.av_from" class="mb-2"></b-form-datepicker>
+      </div>
+
+      <div class="col-md-6">
+        <label for="example-datepicker2">Available To:</label>
+        <b-form-datepicker id="example-datepicker2" v-model="search.av_to" class="mb-2"></b-form-datepicker>
+      </div>
+  </div>
+
+
+
      <b-button  v-on:click="onSubmit()" variant="success">Search</b-button>
 
     </b-form>
@@ -42,6 +57,8 @@
         search :{  
           country: '',
           cost: null,
+          av_from: '',
+          av_to: '',
         },
 
         show: true
@@ -64,7 +81,8 @@
     onFileChanged(event){
       this.file = event.target.files[0]
     },
-
+  
+    
       
     }
   }
@@ -81,3 +99,5 @@
 }
 
 </style>
+
+

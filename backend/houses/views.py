@@ -13,8 +13,8 @@ class HouseList(generics.ListCreateAPIView):
 	serializer_class = HouseSerializer
 	filter_backends = [filters.SearchFilter,filters.OrderingFilter,DjangoFilterBackend]
 	#search_fields = ['title','description']
-	filterset_fields = ['country', 'cost']
-	filter_fields = ['av_from','av_to']
+	#filterset_fields = ['country', 'cost']
+	filter_fields = ['av_from','av_to','cost','country']
 	ordering_fields = ['cost']
 
 	def perform_create(self, serializer):
@@ -22,6 +22,14 @@ class HouseList(generics.ListCreateAPIView):
 
 	def perform_update(self,serializer):
 		serializer.save(host=self.request.user)
+
+	def get_queryset(self):
+		queryset = House.objects.all()
+		book_from = self.request.query_params.get('book_from', None)
+		book_to   = self.request.query_params.get('book_to', None)
+		if book_from is not None:
+			queryset = queryset.filter(av_from__lte=book_from,av_to__gte=book_to)
+		return queryset
 
 
 class HouseDetail(generics.RetrieveUpdateDestroyAPIView):

@@ -12,6 +12,9 @@
 		<p> Garage:{{ house.garage }} </p>
 		<p> wifi:{{ house.wifi }} </p>
 		<p> Aircondition:{{ house.aircondition }} </p>
+    <p>Available from: {{house.av_from }} </p>
+    <p>Available to :  {{house.av_to }} </p>
+
    </div>
 
    <span class="col-md-5 imgContainer">
