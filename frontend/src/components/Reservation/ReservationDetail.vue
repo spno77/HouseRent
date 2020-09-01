@@ -1,6 +1,5 @@
 <template>
 <div>
-	<app />
 		<h1> <b>House name: {{ reservation.house }} </b></h1>
 		<p> Number of days :{{ reservation.days }} </p>
 		<p> Total cost is: {{ reservation.cost }} $ </p>

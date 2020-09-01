@@ -1,7 +1,6 @@
 <template>
     <div>
-        <app />
-        <div>
+      <div>
              <h1 class="ti">  Login </h1>
          <b-container>	
           <b-form  v-if="show">
@@ -31,8 +30,6 @@
      </b-container>
   
        
-
-
       </div>
     </div>
 </template>

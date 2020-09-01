@@ -1,6 +1,5 @@
 <template>
     <div>
-        <app />
         <div>
         <h1 class="ti">  Register User </h1>
         

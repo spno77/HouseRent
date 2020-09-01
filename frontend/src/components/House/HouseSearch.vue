@@ -1,6 +1,5 @@
 <template>
   <div>
-   <app /> 
    <b-container>
 
     <h1 class="ti"> Houses Info </h1>
@@ -94,15 +93,6 @@ export default {
   color: lightblue;
   text-align: center;
 
-}
-
-.ll {
-  max-width: 100%;
-  max-height: 80%;
-  width: auto;
-
-  display: block;
-  margin: 0 auto
 }
 
 

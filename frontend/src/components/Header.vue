@@ -64,11 +64,10 @@
   import { mapActions } from 'vuex';
   export default {
   name: 'Header',
+   
    data(){
     return {
-      //houses : [],
       search_term: '',
-      id: this.tuser.user.id,
     }
    },
    
@@ -86,12 +85,8 @@
     searchHouse: function(){
       this.$store.dispatch('searchHouses'); 
     },
-    change_log(){
-        if (this.tuser.user.id !== '')
-          this.state.isLoggedIn = true
-      }
     
-   }
+  }
   
 }
 </script>

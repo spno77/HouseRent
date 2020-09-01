@@ -1,6 +1,5 @@
 <template>
     <div>
-        <app />
         <h1 class="ti">   Create House  </h1>
         
              

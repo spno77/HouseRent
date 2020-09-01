@@ -1,6 +1,5 @@
 <template>
     <div>
-        <app />
         <div>
              <h1 class="ti">   Edit Profile </h1>
          <b-container>   

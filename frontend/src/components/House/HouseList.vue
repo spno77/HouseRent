@@ -1,6 +1,5 @@
 <template>
   <div>
-   <app /> 
    <b-container>
 
     <h1 class="ti"> Houses Info </h1>
