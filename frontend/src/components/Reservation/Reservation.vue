@@ -33,20 +33,22 @@
             ></b-form-input>
           </b-form-group>
 
-          <b-form-group id="input-group-2" label="Days:" label-for="input-2">
-            <b-form-input
-              id="input-2"
-              type="number"
-              v-model="reservation.days"
-              required
-              placeholder="Enter days"
-            ></b-form-input>
-          </b-form-group>
+           <div class="row">
+      <div class="col-md-6">
+        <label for="example-datepicker">Reserve From:</label>
+        <b-form-datepicker id="example-datepicker" v-model="reservation.reserve_in" class="mb-2"></b-form-datepicker>
+      </div>
+
+      <div class="col-md-6">
+        <label for="example-datepicker2">Reserve To:</label>
+        <b-form-datepicker id="example-datepicker2" v-model="reservation.reserve_out" class="mb-2"></b-form-datepicker>
+      </div>
+  </div>
 
           <b-button  v-on:click="onSubmit" variant="success">Submit</b-button>
         
           </b-form>
-            <h1> Cost is : {{ this.calculateFinalCost() }} $ </h1>
+            <h1 v-show="reservation.reserve_in !== '' && reservation.reserve_out !=='' && this.finalCost > 0"> The total cost is : {{ this.calculateFinalCost() }} $ </h1>
           </b-container>
         </div>
     </div>
@@ -67,7 +69,8 @@
         idd: this.$route.params.id,
         showCost: false, 
         reservation:{
-          days: '',
+          reserve_in: '',
+          reserve_out: '',
         },
         house:{
           title: '',
@@ -98,29 +101,44 @@
       ...mapActions(['loginUser']),
       
       onSubmit() {
-        axios
-          .post('http://127.0.0.1:8000/api/v1/reservations/',{
-            house:        this.house.id,
-            cost:         this.finalCost,
-            days:         this.reservation.days,
-            tenant:       this.tuser.user.id
-          },
-           {headers: {'Authorization': 'JWT ' + this.tuser.token}}  
-          )
-          .catch((err) => {
-             console.log(err.response.data);
-           });
+        if(this.finalCost > 0){
+          axios
+            .post('http://127.0.0.1:8000/api/v1/reservations/',{
+              house:        this.house.id,
+              cost:         this.finalCost,
+              reserve_in:   this.reservation.reserve_in,
+              reserve_out:  this.reservation.reserve_out,
+              tenant:       this.tuser.user.id
+            },
+             {headers: {'Authorization': 'JWT ' + this.tuser.token}}  
+            )
+            .catch((err) => {
+               console.log(err.response.data);
+            });
+        }
         
         this.$router.push('/')
 
       },
+
+      datediff(first, second) {
+        var date1 = new Date(first)
+        var date2 = new Date(second)
+
+        return Math.round((date2-date1)/(1000*60*60*24));
+      },
+
     
       changeCost(){
         this.showCost = true
       },
 
       calculateFinalCost(){
-        this.finalCost = this.house.cost * this.reservation.days
+        
+        var days = this.datediff(this.reservation.reserve_in, this.reservation.reserve_out) 
+        
+        this.finalCost = this.house.cost * days
+        
         return this.finalCost
       }
 

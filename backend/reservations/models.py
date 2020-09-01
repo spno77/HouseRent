@@ -5,12 +5,14 @@ from houses.models import House
 
 class Reservation(models.Model):
 
-	tenant = models.ForeignKey(get_user_model(),on_delete=models.CASCADE,related_name='tenant')
-	house =  models.ForeignKey('houses.House',on_delete=models.CASCADE,related_name='house')
+	tenant      = models.ForeignKey(get_user_model(),on_delete=models.CASCADE,related_name='tenant')
+	house       = models.ForeignKey('houses.House',on_delete=models.CASCADE,related_name='house')
 
-	days = models.IntegerField()
-	cost = models.FloatField()
+	cost        = models.FloatField()
 	
+	reserve_in  = models.DateField()
+	reserve_out = models.DateField()
+
 
 	def __str__(self):
 		return f"User {self.tenant} reserved {self.house}"

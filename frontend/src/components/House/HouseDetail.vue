@@ -15,6 +15,8 @@
     <p>Available from: {{house.av_from }} </p>
     <p>Available to :  {{house.av_to }} </p>
 
+   <p>Date difference is: {{ datediff(house.av_from,house.av_to) }} </p>
+
    </div>
 
    <span class="col-md-5 imgContainer">
@@ -71,8 +73,7 @@ export default {
       ]),
     },
 
-
-   created(){
+  created(){
     this.getHouse();
   },
 
@@ -97,6 +98,13 @@ export default {
           }).addTo(this.map);
 
     },
+
+    datediff(first, second) {
+       var date1 = new Date(first)
+       var date2 = new Date(second)
+
+       return Math.round((date2-date1)/(1000*60*60*24));
+    }
 
 
   }
