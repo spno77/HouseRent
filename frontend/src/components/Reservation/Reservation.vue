@@ -101,24 +101,28 @@
       ...mapActions(['loginUser']),
       
       onSubmit() {
-        if(this.finalCost > 0){
-          axios
-            .post('http://127.0.0.1:8000/api/v1/reservations/',{
-              house:        this.house.id,
-              cost:         this.finalCost,
-              reserve_in:   this.reservation.reserve_in,
-              reserve_out:  this.reservation.reserve_out,
-              tenant:       this.tuser.user.id
-            },
-             {headers: {'Authorization': 'JWT ' + this.tuser.token}}  
-            )
-            .catch((err) => {
-               console.log(err.response.data);
-            });
+        if(this.compareDates() === true){
+          if(this.finalCost > 0){
+            axios
+              .post('http://127.0.0.1:8000/api/v1/reservations/',{
+                house:        this.house.id,
+                cost:         this.finalCost,
+                reserve_in:   this.reservation.reserve_in,
+                reserve_out:  this.reservation.reserve_out,
+                tenant:       this.tuser.user.id
+              },
+               {headers: {'Authorization': 'JWT ' + this.tuser.token}}  
+              )
+              .catch((err) => {
+                 console.log(err.response.data);
+              });
+            this.$router.push('/')  
+          }
         }
-        
-        this.$router.push('/')
-
+        else{
+          console.log("Wrong dates")
+        }
+      
       },
 
       datediff(first, second) {
@@ -140,6 +144,20 @@
         this.finalCost = this.house.cost * days
         
         return this.finalCost
+      },
+
+      compareDates(){
+        var house_from = new Date(this.house.av_from)
+        var house_to   = new Date(this.house.av_to)
+        var res_from   = new Date(this.reservation.reserve_in)
+        var res_to     = new Date(this.reservation.reserve_out)
+       if( (house_from <= res_from)  && house_to >= house_from){
+        return true
+       }
+       else{
+        alert("Wrong dates !")
+        return false
+       }
       }
 
     },
