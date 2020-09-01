@@ -1,8 +1,9 @@
 <template>
 <div>
 		<h1> <b>House name: {{ reservation.house }} </b></h1>
-		<p> Number of days :{{ reservation.days }} </p>
-		<p> Total cost is: {{ reservation.cost }} $ </p>
+		<b>Reservation from: </b> {{ reservation.reserve_in }}
+    <b>To: </b> {{ reservation.reserve_out }} <br>
+    <p> Total cost is: {{ reservation.cost }} $ </p>
 		
 	
     <router-link :to="{name: 'review',params: { id: this.idd }}" class="btn btn-success">Add Review</router-link>
