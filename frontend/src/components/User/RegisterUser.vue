@@ -141,6 +141,13 @@
           .post('http://127.0.0.1:8000/api/v1/rest-auth/registration/',fd)
           .catch((err) => {
              console.log(err.response.data);
+             if(err.response.data.username){
+               alert(err.response.data.username)
+             }
+             if(err.response.data.email){
+               alert(err.response.data.email)
+             }
+
            });
       },
     }

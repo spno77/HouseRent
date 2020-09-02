@@ -48,7 +48,7 @@
           <b-button  v-on:click="onSubmit" variant="success">Submit</b-button>
         
           </b-form>
-            <h1 v-show="reservation.reserve_in !== '' && reservation.reserve_out !=='' && this.finalCost > 0"> The total cost is : {{ this.calculateFinalCost() }} $ </h1>
+            <h1 v-show="reservation.reserve_in !== '' && reservation.reserve_out !=='' && this.finalCost > 0 && this.compareDates() === true"> The total cost is : {{ this.calculateFinalCost() }} $ </h1>
           </b-container>
         </div>
     </div>
@@ -151,7 +151,7 @@
         var house_to   = new Date(this.house.av_to)
         var res_from   = new Date(this.reservation.reserve_in)
         var res_to     = new Date(this.reservation.reserve_out)
-       if( (house_from <= res_from)  && house_to >= house_from){
+       if( (house_from <= res_from)  && (house_to >= res_to)){
         return true
        }
        else{

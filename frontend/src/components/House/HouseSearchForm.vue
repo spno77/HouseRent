@@ -73,14 +73,29 @@
       ...mapActions(['updateSearchTerm']),
 
     onSubmit() {
-      this.$store.dispatch('updateSearchTerm',this.search)
-      this.$router.push('/houses_search')
+      if(this.compareDates() === true) {
+        this.$store.dispatch('updateSearchTerm',this.search)
+        this.$router.push('/houses_search')
+      }
+      else{
+        alert("Wrong Dates")
+      }
     },
 
     onFileChanged(event){
       this.file = event.target.files[0]
     },
   
+    compareDates(){
+       var book_from = new Date(this.search.book_from)
+       var book_to   = new Date(this.search.book_to)
+       if (book_from < book_to){
+        return true
+       }
+       else{
+        return false
+       }
+    }
 
       
     }
