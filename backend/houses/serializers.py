@@ -3,6 +3,7 @@ from rest_framework import serializers
 from .models import House
 from django.contrib.auth import get_user_model
 from reviews.serializers import ReviewSerializer
+from reservations.serializers import ReservationSerializer
 
 
 '''class HouseImageSerializer(serializers.ModelSerializer):
@@ -19,12 +20,13 @@ class HouseSerializer(serializers.ModelSerializer):
 	host    =    serializers.PrimaryKeyRelatedField(source='host.username',queryset=get_user_model().objects.all())
 	reviews =    ReviewSerializer(many=True,read_only=True)
 	#house_img  = HouseImageSerializer(many=True,read_only=True)
+	reservations = ReservationSerializer(many=True,read_only=True)
 
 	class Meta:
 		model = House
 		fields = ['id','title','description','cost','rooms','garage',
 		'wifi','aircondition','city','country','image','lon','lat',
-		'av_from','av_to','host','reviews',]
+		'av_from','av_to','host','reviews','reservations']
 
 	def update(self,instance,validated_data):
 		instance.id           = validated_data.get('id', instance.id)

@@ -18,6 +18,7 @@ import RegisterUser from './components/User/RegisterUser.vue'
 import LoginUser from './components/User/LoginUser.vue'
 import UserProfile from './components/User/UserProfile.vue'
 import UserEdit from './components/User/UserEdit.vue'
+import AdminPanel from './components/User/AdminPanel.vue'
 
 import Reservation from './components/Reservation/Reservation.vue'
 import ReservationDetail from './components/Reservation/ReservationDetail.vue'
@@ -169,6 +170,12 @@ const routes = [
 		path: '/review/list',
 		name: 'reviewlist',
 		component: ReviewList,
+		props: true
+	},
+	{
+		path: '/admin/',
+		name: 'adminpanel',
+		component: AdminPanel,
 		props: true
 	},
 

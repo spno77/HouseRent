@@ -24,9 +24,11 @@
       </b-form-group>
 
       <b-button  @click="loginUser(user),homepage()" variant="primary"> Login </b-button>
+
        
     </b-form>
-     
+
+
      </b-container>
   
        
@@ -40,6 +42,7 @@
   import { mapGetters } from 'vuex';
   import { mapActions } from 'vuex';
 
+
   export default {
     
     data() {
@@ -47,25 +50,28 @@
         user:{
           username: '',
           password: '',
+          is_staff: null
         },
         id: '',
-        show: true
+        show: true,
       }
     },
     computed:{
       ...mapGetters([
-        'tuser'
+        'tuser',
       ])
      },
 
-    methods: {
+     methods: {
       ...mapActions(['loginUser']),
-
-      homepage(){
+      
+     homepage(){
          this.$router.push('/')
       },
     }
-  
+
+      
+
 }
 </script>
 

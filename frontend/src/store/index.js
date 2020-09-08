@@ -10,6 +10,7 @@ const state = {
 	user: {
 		username: '',
 		password: '',
+		is_staff: null
 	},
 	isLoggedIn: false,
 	reservations: [],
@@ -54,6 +55,9 @@ const mutations = {
 	UPDATE_SEARCH_TERM(state,payload) {
 		state.search_term = payload
 	},
+	UPDATE_IS_STAFF(state,payload){
+		state.user.is_staff = payload
+	}
 
 }
 
@@ -106,9 +110,10 @@ const getters = {
 	houses: 	  state => state.houses,
 	house_images: state => state.images,
 	tuser:  	  state => state.user,
-	isLoggedIn:   store => state.isLoggedIn,
-	reservations: store => state.reservations,
-	search_term:  store => state.search_term,
+	isLoggedIn:   state => state.isLoggedIn,
+	reservations: state => state.reservations,
+	search_term:  state => state.search_term,
+	is_staff:     state => state.user.username
 }
 
 
