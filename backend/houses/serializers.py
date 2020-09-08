@@ -26,23 +26,34 @@ class HouseSerializer(serializers.ModelSerializer):
 		model = House
 		fields = ['id','title','description','cost','rooms','garage',
 		'wifi','aircondition','city','country','image','lon','lat',
-		'av_from','av_to','host','reviews','reservations']
+		'av_from','av_to','host','reviews','reservations',
+		'heat','area','beds','bedrooms','bathrooms','transport_desc',
+		'house_type',]
 
 	def update(self,instance,validated_data):
-		instance.id           = validated_data.get('id', instance.id)
-		instance.title        = validated_data.get('title', instance.title)
-		instance.description  = validated_data.get('description', instance.description)
-		instance.cost         = validated_data.get('cost', instance.cost)
-		instance.rooms        = validated_data.get('rooms', instance.rooms)
-		instance.garage       = validated_data.get('garage', instance.garage)
-		instance.wifi         = validated_data.get('wifi', instance.wifi)
-		instance.aircondition = validated_data.get('aircondition', instance.aircondition)
-		instance.city         = validated_data.get('city', instance.city)
-		instance.country      = validated_data.get('country', instance.country)
-		instance.image        = validated_data.get('image', instance.image)
-		instance.lon          = validated_data.get('lon', instance.lon)
-		instance.lat          = validated_data.get('lat', instance.lat)
-		instance.host         = validated_data.get('host.username',instance.host)
+		instance.id             = validated_data.get('id', instance.id)
+		instance.title          = validated_data.get('title', instance.title)
+		instance.description    = validated_data.get('description', instance.description)
+		instance.cost           = validated_data.get('cost', instance.cost)
+		instance.rooms          = validated_data.get('rooms', instance.rooms)
+		instance.garage         = validated_data.get('garage', instance.garage)
+		instance.wifi           = validated_data.get('wifi', instance.wifi)
+		instance.aircondition   = validated_data.get('aircondition', instance.aircondition)
+		instance.city           = validated_data.get('city', instance.city)
+		instance.country        = validated_data.get('country', instance.country)
+		instance.image          = validated_data.get('image', instance.image)
+		instance.lon            = validated_data.get('lon', instance.lon)
+		instance.lat            = validated_data.get('lat', instance.lat)
+		instance.host           = validated_data.get('host.username',instance.host)
+		#new fields
+		instance.heat           = validated_data.get('heat',instance.heat)
+		instance.area           = validated_data.get('area',instance.area)
+		instance.beds           = validated_data.get('beds',instance.beds)
+		instance.bedrooms       = validated_data.get('bedrooms',instance.bedrooms)
+		instance.bathrooms      = validated_data.get('bathrooms',instance.bathrooms)
+		instance.transport_desc = validated_data.get('transport_desc',instance.transport_desc)
+		instance.house_type     = validated_data.get('house_type',instance.house_type)
+
 		instance.save()
 		return instance
 		
