@@ -19,7 +19,7 @@ class House(models.Model):
 	title          = models.CharField(max_length=20)
 	description    = models.CharField(max_length=150)
 	cost           = models.FloatField()
-	rooms          = models.IntegerField()
+	rooms          = models.PositiveIntegerField()
 	garage         = models.BooleanField(default=False)
 	wifi           = models.BooleanField(default=False)
 	aircondition   = models.BooleanField(default=False)
@@ -34,11 +34,16 @@ class House(models.Model):
 	#new fields added
 	heat           = models.BooleanField(default=False)
 	area           = models.FloatField()
-	beds           = models.IntegerField()
-	bedrooms       = models.IntegerField()
-	bathrooms      = models.IntegerField()
+	beds           = models.PositiveIntegerField()
+	bedrooms       = models.PositiveIntegerField()
+	bathrooms      = models.PositiveIntegerField()
 	transport_desc = models.CharField(max_length=150)
 	house_type     = models.CharField(max_length=15,choices=HOUSE_TYPES)
+
+	people_num     = models.PositiveIntegerField()
+	people_max     = models.PositiveIntegerField()
+	rules          = models.CharField(max_length=150) 
+	plus_cost      = models.PositiveIntegerField()
 
 	host = models.ForeignKey(get_user_model(),on_delete=models.CASCADE,related_name='host')
 
