@@ -7,7 +7,7 @@
            <b-form v-if="show">
             <div class="row">
         
-         
+        
             <div class="col-md-6">
       <b-form-group
         id="input-group-1"
@@ -31,17 +31,56 @@
         ></b-form-input>
       </b-form-group>
 
+      <b-form-group id="input-group-2" label="Transport Description:" label-for="input-2">
+        <b-form-input
+          id="input-2"
+          v-model="house.transport_desc"
+          required
+          placeholder="Enter transport description"
+        ></b-form-input>
+      </b-form-group>
+
+       <b-form-group id="input-group-2" label="House Rules:" label-for="input-2">
+        <b-form-input
+          id="input-2"
+          v-model="house.rules"
+          required
+          placeholder="Enter house rules"
+        ></b-form-input>
+      </b-form-group>
     
 
-      <b-form-group id="input-group-2" label="Rooms:" label-for="input-2">
+      <b-form-group id="input-group-2" label="Bedrooms:" label-for="input-2">
         <b-form-input
           id="input-2"
           type="number"
-          v-model="house.rooms"
+          v-model="house.bedrooms"
           required
-          placeholder="Enter room number"
+          placeholder="Enter bedroom number"
         ></b-form-input>
       </b-form-group>
+
+      <b-form-group id="input-group-2" label="Beds:" label-for="input-2">
+        <b-form-input
+          id="input-2"
+          type="number"
+          v-model="house.beds"
+          required
+          placeholder="Enter beds number"
+        ></b-form-input>
+      </b-form-group>
+
+
+      <b-form-group id="input-group-2" label="Bathrooms:" label-for="input-2">
+        <b-form-input
+          id="input-2"
+          type="number"
+          v-model="house.bathrooms"
+          required
+          placeholder="Enter bathroom number"
+        ></b-form-input>
+      </b-form-group>
+
 
       <b-form-group id="input-group-2" label="Cost:" label-for="input-2">
         <b-form-input
@@ -52,6 +91,35 @@
           placeholder="Enter cost"
         ></b-form-input>
       </b-form-group>
+
+
+       <b-form-group id="input-group-2" label="Extra Cost:" label-for="input-2">
+        <b-form-input
+          id="input-2"
+          type="number"
+          v-model="house.plus_cost"
+          required
+          placeholder="Enter extra cost"
+        ></b-form-input>
+      </b-form-group>
+
+       <b-form-group label="Heat:">
+      <b-form-radio-group class="pt-2">
+        <b-form-radio v-model="house.heat" value = "true">True</b-form-radio>
+        <b-form-radio v-model="house.heat" value = "false">False</b-form-radio>
+      </b-form-radio-group>
+    </b-form-group>
+
+ <b-form-group id="input-group-2" label="Area:" label-for="input-2">
+        <b-form-input
+          id="input-2"
+          type="number"
+          v-model="house.area"
+          required
+          placeholder="Enter area"
+        ></b-form-input>
+      </b-form-group>
+
 </div>
 <div class="col-md-6">
 
@@ -126,6 +194,32 @@
       </b-form-radio-group>
     </b-form-group>
 
+    <b-form-group id="input-group-2" label="House Type:" label-for="input-2">
+          <b-form-select v-model="house.type" :options="house.options"> </b-form-select> 
+      </b-form-group>   
+
+
+   <b-form-group id="input-group-2" label="Number of peoples:" label-for="input-2">
+        <b-form-input
+          id="input-2"
+          type="number"
+          v-model="house.people_num"
+          required
+          placeholder="Enter number of peoples"
+        ></b-form-input>
+      </b-form-group>
+
+
+ <b-form-group id="input-group-2" label="Max number of peoples:" label-for="input-2">
+        <b-form-input
+          id="input-2"
+          type="number"
+          v-model="house.people_max"
+          required
+          placeholder="Enter max number of people"
+        ></b-form-input>
+      </b-form-group>
+
     
 </div>
    
@@ -167,7 +261,6 @@
           title: '',
           description: '',
           cost: '',
-          rooms: '',
           garage: true,
           wifi: true,
           aircondition: true,
@@ -178,7 +271,25 @@
           lat: '',
           av_from: '',
           av_to: '',
+          //new fields
+          heat: false,
+          area: '',
+          bedrooms: '',
+          bathrooms: '',
+          beds: '',
+          transport_desc: '',
+          type: null,
+          options: [
+          { value: null, text: 'Please select a house type' },
+          { value: 'entire_place', text: 'Entire  Place' },
+          { value: 'private_room', text: 'Private Room' },
+          { value: 'shared_room',  text: 'Shared  Room' },
+         ],
+         people_num: '',
+         people_max: '',
         },
+        plus_cost: '',
+        rules:'',
 
         map: null,
         tileLayer: null,
@@ -235,24 +346,35 @@
       onSubmit() {
         const fd = new FormData()
 
-        fd.append('title'       ,this.house.title)
-        fd.append('description' ,this.house.description)
-        fd.append('cost'        ,this.house.cost)
-        fd.append('rooms'       ,this.house.rooms)
-        fd.append('garage'      ,this.house.garage)
-        fd.append('wifi'        ,this.house.wifi)
-        fd.append('aircondition',this.house.aircondition)
-        fd.append('country'     ,this.house.country)
-        fd.append('city'        ,this.house.city)
-        fd.append('host'        ,this.tuser.user.id)
-        fd.append('image'       ,this.house.image,this.house.image.name)
+        fd.append('title'          ,this.house.title)
+        fd.append('description'    ,this.house.description)
+        fd.append('cost'           ,this.house.cost)
+        fd.append('garage'         ,this.house.garage)
+        fd.append('wifi'           ,this.house.wifi)
+        fd.append('aircondition'   ,this.house.aircondition)
+        fd.append('country'        ,this.house.country)
+        fd.append('city'           ,this.house.city)
+        fd.append('host'           ,this.tuser.user.id)
+        fd.append('image'          ,this.house.image,this.house.image.name)
 
-        fd.append('lon'         ,this.house.lon)
-        fd.append('lat'         ,this.house.lat)
+        fd.append('lon'            ,this.house.lon)
+        fd.append('lat'            ,this.house.lat)
 
-        fd.append('av_from'     ,this.house.av_from)
-        fd.append('av_to'       ,this.house.av_to)
-        
+        fd.append('av_from'        ,this.house.av_from)
+        fd.append('av_to'          ,this.house.av_to)
+
+        fd.append('heat'           ,this.house.heat)
+        fd.append('area'           ,this.house.area)
+        fd.append('bedrooms'       ,this.house.bedrooms)
+        fd.append('bathrooms'      ,this.house.bathrooms)
+        fd.append('beds'           ,this.house.beds)
+        fd.append('transport_desc' ,this.house.transport_desc )
+        fd.append('house_type '    ,this.house.type)
+        fd.append('people_num'     ,this.house.people_num )
+        fd.append('people_max'     ,this.house.people_max )
+        fd.append('plus_cost'      ,this.house.plus_cost )
+        fd.append('rules'          ,this.house.rules )
+
 
         axios
           .post('http://127.0.0.1:8000/api/v1/houses/',fd,

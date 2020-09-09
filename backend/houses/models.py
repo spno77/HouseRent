@@ -19,7 +19,7 @@ class House(models.Model):
 	title          = models.CharField(max_length=20)
 	description    = models.CharField(max_length=150)
 	cost           = models.FloatField()
-	rooms          = models.PositiveIntegerField()
+	#rooms          = models.PositiveIntegerField()
 	garage         = models.BooleanField(default=False)
 	wifi           = models.BooleanField(default=False)
 	aircondition   = models.BooleanField(default=False)

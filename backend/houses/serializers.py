@@ -25,7 +25,7 @@ class HouseSerializer(serializers.ModelSerializer):
 
 	class Meta:
 		model = House
-		fields = ['id','title','description','cost','rooms','garage',
+		fields = ['id','title','description','cost','garage',
 		'wifi','aircondition','city','country','image','lon','lat',
 		'av_from','av_to','host','reviews','reservations',
 		'heat','area','beds','bedrooms','bathrooms','transport_desc',
@@ -36,7 +36,7 @@ class HouseSerializer(serializers.ModelSerializer):
 		instance.title          = validated_data.get('title', instance.title)
 		instance.description    = validated_data.get('description', instance.description)
 		instance.cost           = validated_data.get('cost', instance.cost)
-		instance.rooms          = validated_data.get('rooms', instance.rooms)
+		#instance.rooms          = validated_data.get('rooms', instance.rooms)
 		instance.garage         = validated_data.get('garage', instance.garage)
 		instance.wifi           = validated_data.get('wifi', instance.wifi)
 		instance.aircondition   = validated_data.get('aircondition', instance.aircondition)
