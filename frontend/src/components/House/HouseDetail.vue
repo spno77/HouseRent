@@ -1,33 +1,142 @@
 <template>
 <div>
 <h1> <b>{{ house.title }} </b></h1>
+
  <b-jumbotron header-level="4" >
   <div class="row">
     <div class="col-md-7" >
-		
-		<p> {{ house.description }} </p>
-    <p> Country: {{ house.country }} </p>
-    <p> City:    {{ house.city }} </p>
-		<p> cost : {{ house.cost }} $ </p>
-		<p> Garage:{{ house.garage }} </p>
-		<p> wifi:{{ house.wifi }} </p>
-		<p> Aircondition:{{ house.aircondition }} </p>
-    <p>Available from: {{house.av_from }} </p>
-    <p>Available to :  {{house.av_to }} </p>
-
-   <p>Date difference is: {{ datediff(house.av_from,house.av_to) }} </p>
+    
+    <tr><b>Place:</b></tr> <br>
+    
+    <p> Number of beds:        {{ house.beds }}        </p>
+    <p> Number of bedrooms:    {{ house.bedrooms }}    </p>
+    <p> Number of bathrooms :  {{ house.bathrooms }}   </p>
+    <p> House Type :           {{ house.house_type }}        </p>
+    <p> Area:                  {{ house.area }}     <span>&#13217;</span>   </p>
 
    </div>
 
    <span class="col-md-5 imgContainer">
+      <br>
       <img :src="house.image">
    </span> 
 
-  </div> 
+  </div>
+
+  <div class="row">
+
+    <div class="col-md-7">
+     <tr><b>Description:</b></tr> <br>
+    
+     <p> Description:           {{ house.description }} </p>
+     <p> Rules:                 {{ house.rules }} </p>
+     <p> Number of people:      {{ house.people_num }} </p>
+   
+  
+    </div>
+    <div class="col-md-5"> 
+    <tr>   </tr><br>
+    <br>
+     <p> Max number of people:  {{ house.people_max }} </p>
+     <p> Cost :                 {{ house.cost }} $ </p>
+     <p> Extra Cost:            {{ house.plus_cost }}</p>
+    
+    </div>
+
+
+  </div>
+
+    <div class="row">
+
+    <div class="col-md-7">
+     <tr><b>Amenities:</b></tr> <br>
+    
+     <p> WiFi:                        {{ house.wifi }} </p>
+     <p> Aircondition:                {{ house.aircondition }} </p>
+   
+  
+    </div>
+    <div class="col-md-5"> 
+    <tr>   </tr><br>
+    <br>
+     <p> Heat:                  {{ house.heat }} </p>
+     <p> Garage :               {{ house.garage }}  </p>
+    
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="col-md-7">
+     <tr><b>Availability:</b></tr> <br>
+    
+       <p>Available from: {{house.av_from }} </p>
+    
+  
+    </div>
+    <div class="col-md-5"> 
+    <tr>   </tr><br>
+    <br>
+     <p>Available to :  {{house.av_to }} </p>
+    
+    </div>
+
+
+  </div>
+
+
+<div class="row">
+
+    <div class="col-md-7">
+     <tr><b>Address:</b></tr> <br>
+    
+       <p>Country: {{house.country }} </p>
+      
+    
+  
+    </div>
+    <div class="col-md-5"> 
+    <tr>   </tr><br>
+    <br>
+     <p> City :  {{house.city }} </p>
+    
+    </div>
+
+  </div>
+  <div>
+     <tr> <b>Transport description : </b>  </tr><br>
+      {{ house.transport_desc }} <br>
+      <br>
+   </div> 
+
+
+
         <b-container>
           <div id="map"  class="map">
           </div>
         </b-container> 
+
+<br>
+
+<div class="row">
+    <div class="col-md-7" >
+    
+    <tr><b>Host: </b></tr> <br>
+    
+    <p> Username:        {{ house.host.username }}        </p>
+
+   </div>
+
+   <span class="col-md-5 imgContainer">
+      <br>
+      <img :src="house.host.image">
+   </span> 
+
+  </div>
+
+
 
 </b-jumbotron>
 
