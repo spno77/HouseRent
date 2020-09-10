@@ -1,247 +1,213 @@
 <template>
-    <div>
-        <h1 class="ti">   Create House  </h1>
-        
-             
-        <b-container>
-           <b-form v-if="show">
-            <div class="row">
-        
-        
+  <div>
+    <h1 class="ti">   Create House  </h1>           
+      <b-container>
+        <b-form v-if="show">
+          <div class="row">
             <div class="col-md-6">
-      <b-form-group
-        id="input-group-1"
-        label="Title:"
-        label-for="input-1"
-      >
-        <b-form-input
-          id="input-1"
-          v-model="house.title"
-          required
-          placeholder="Enter title"
-        ></b-form-input>
-      </b-form-group>
+      
+              <b-form-group id="input-group-1" label="Title:" label-for="input-1">
+              <b-form-input
+                id="input-1"
+                v-model="house.title"
+                required
+                placeholder="Enter title"
+              ></b-form-input>
+              </b-form-group>
 
-      <b-form-group id="input-group-2" label="Description:" label-for="input-2">
-        <b-form-input
-          id="input-2"
-          v-model="house.description"
-          required
-          placeholder="Enter description"
-        ></b-form-input>
-      </b-form-group>
+              <b-form-group id="input-group-2" label="House Rules:" label-for="input-2">
+              <b-form-input
+                id="input-2"
+                v-model="house.rules"
+                required
+                placeholder="Enter house rules"
+              ></b-form-input>
+              </b-form-group>
 
-      <b-form-group id="input-group-2" label="Transport Description:" label-for="input-2">
-        <b-form-input
-          id="input-2"
-          v-model="house.transport_desc"
-          required
-          placeholder="Enter transport description"
-        ></b-form-input>
-      </b-form-group>
+              <b-form-group id="input-group-2" label="Max number of people:" label-for="input-2">
+              <b-form-input
+                id="input-2"
+                type="number"
+                v-model="house.people_max"
+                required
+                placeholder="Enter max number of people"
+              ></b-form-input>
+              </b-form-group>
 
-       <b-form-group id="input-group-2" label="House Rules:" label-for="input-2">
-        <b-form-input
-          id="input-2"
-          v-model="house.rules"
-          required
-          placeholder="Enter house rules"
-        ></b-form-input>
-      </b-form-group>
+              <b-form-group id="input-group-2" label="Cost:" label-for="input-2">
+                <b-form-input
+                  id="input-2"
+                  type="number"
+                  v-model="house.cost"
+                  required
+                  placeholder="Enter cost"
+                ></b-form-input>
+              </b-form-group>
+     
+              <b-form-group id="input-group-2" label="Bedrooms:" label-for="input-2">
+                <b-form-input
+                  id="input-2"
+                  type="number"
+                  v-model="house.bedrooms"
+                  required
+                  placeholder="Enter bedroom number"
+                ></b-form-input>
+              </b-form-group>
+
+              <b-form-group id="input-group-2" label="Beds:" label-for="input-2">
+                <b-form-input
+                  id="input-2"
+                  type="number"
+                  v-model="house.beds"
+                  required
+                  placeholder="Enter beds number"
+                ></b-form-input>
+              </b-form-group>
+
+              <b-form-group label="Garage:">
+                <b-form-radio-group class="pt-2">
+                  <b-form-radio v-model="house.garage" value = "true">True</b-form-radio>
+                  <b-form-radio v-model="house.garage" value = "false">False</b-form-radio>
+                </b-form-radio-group>
+              </b-form-group>
     
+              <b-form-group label="Heat:">
+                <b-form-radio-group class="pt-2">
+                  <b-form-radio v-model="house.heat" value = "true">True</b-form-radio>
+                  <b-form-radio v-model="house.heat" value = "false">False</b-form-radio>
+                </b-form-radio-group>
+              </b-form-group>
 
-      <b-form-group id="input-group-2" label="Bedrooms:" label-for="input-2">
-        <b-form-input
-          id="input-2"
-          type="number"
-          v-model="house.bedrooms"
-          required
-          placeholder="Enter bedroom number"
-        ></b-form-input>
-      </b-form-group>
+              <b-form-group id="input-group-1" label="Country:" label-for="input-1">
+                <b-form-input
+                  id="input-1"
+                  v-model="house.country"
+                  required
+                  placeholder="Enter country"
+                ></b-form-input>
+              </b-form-group>
 
-      <b-form-group id="input-group-2" label="Beds:" label-for="input-2">
-        <b-form-input
-          id="input-2"
-          type="number"
-          v-model="house.beds"
-          required
-          placeholder="Enter beds number"
-        ></b-form-input>
-      </b-form-group>
+              <div>
+                <label for="example-datepicker">Available From:</label>
+                <b-form-datepicker id="example-datepicker" v-model="house.av_from" class="mb-2">
+                </b-form-datepicker>
+              </div>
 
+              <b-form-group id="input-group-2" label="Transport Description:" label-for="input-2">
+                <b-form-input
+                  id="input-2"
+                  v-model="house.transport_desc"
+                  required
+                  placeholder="Enter transport description"
+                ></b-form-input>
+              </b-form-group>
+        </div>
 
-      <b-form-group id="input-group-2" label="Bathrooms:" label-for="input-2">
-        <b-form-input
-          id="input-2"
-          type="number"
-          v-model="house.bathrooms"
-          required
-          placeholder="Enter bathroom number"
-        ></b-form-input>
-      </b-form-group>
+            <div class="col-md-6">
 
+              <b-form-group id="input-group-2" label="Description:" label-for="input-2">
+                <b-form-input
+                id="input-2"
+                v-model="house.description"
+                required
+                placeholder="Enter description"
+                ></b-form-input>
+              </b-form-group>
 
-      <b-form-group id="input-group-2" label="Cost:" label-for="input-2">
-        <b-form-input
-          id="input-2"
-          type="number"
-          v-model="house.cost"
-          required
-          placeholder="Enter cost"
-        ></b-form-input>
-      </b-form-group>
+              <b-form-group id="input-group-2" label="Number of people:" label-for="input-2">
+                 <b-form-input
+                   id="input-2"
+                   type="number"
+                   v-model="house.people_num"
+                   required
+                   placeholder="Enter number of people"
+                 ></b-form-input>
+               </b-form-group>
 
+              <b-form-group id="input-group-2" label="House Type:" label-for="input-2">
+                <b-form-select v-model="house.type" :options="house.options"> </b-form-select> 
+              </b-form-group>   
 
-       <b-form-group id="input-group-2" label="Extra Cost:" label-for="input-2">
-        <b-form-input
-          id="input-2"
-          type="number"
-          v-model="house.plus_cost"
-          required
-          placeholder="Enter extra cost"
-        ></b-form-input>
-      </b-form-group>
+              <b-form-group id="input-group-2" label="Extra Cost:" label-for="input-2">
+                <b-form-input
+                  id="input-2"
+                  type="number"
+                  v-model="house.plus_cost"
+                  required
+                  placeholder="Enter extra cost"
+                ></b-form-input>
+              </b-form-group>
 
-       <b-form-group label="Heat:">
-      <b-form-radio-group class="pt-2">
-        <b-form-radio v-model="house.heat" value = "true">True</b-form-radio>
-        <b-form-radio v-model="house.heat" value = "false">False</b-form-radio>
-      </b-form-radio-group>
-    </b-form-group>
+              <b-form-group id="input-group-2" label="Bathrooms:" label-for="input-2">
+                <b-form-input
+                  id="input-2"
+                  type="number"
+                  v-model="house.bathrooms"
+                  required
+                  placeholder="Enter bathroom number"
+                ></b-form-input>
+              </b-form-group>
 
- <b-form-group id="input-group-2" label="Area:" label-for="input-2">
-        <b-form-input
-          id="input-2"
-          type="number"
-          v-model="house.area"
-          required
-          placeholder="Enter area"
-        ></b-form-input>
-      </b-form-group>
+              <b-form-group id="input-group-2" label="Area:" label-for="input-2">
+                <b-form-input
+                  id="input-2"
+                  type="number"
+                  v-model="house.area"
+                  required
+                  placeholder="Enter area"
+                ></b-form-input>
+              </b-form-group>
 
-</div>
-<div class="col-md-6">
+              <b-form-group label="Wifi:">
+                <b-form-radio-group class="pt-2">
+                  <b-form-radio v-model="house.wifi" value = "true">True</b-form-radio>
+                  <b-form-radio v-model="house.wifi" value = "false">False</b-form-radio>
+                </b-form-radio-group>
+              </b-form-group>
 
+             <b-form-group label="Aircondition:">
+               <b-form-radio-group class="pt-2">
+                 <b-form-radio v-model="house.aircondition" value = "true">True</b-form-radio>
+                 <b-form-radio v-model="house.aircondition" value = "false">False</b-form-radio>
+               </b-form-radio-group>
+             </b-form-group>
 
-     <b-form-group
-        id="input-group-1"
-        label="Country:"
-        label-for="input-1"
-      >
-        <b-form-input
-          id="input-1"
-          v-model="house.country"
-          required
-          placeholder="Enter country"
-        ></b-form-input>
-      </b-form-group>
+            <b-form-group id="input-group-1" label="City:" label-for="input-1">
+                <b-form-input
+                  id="input-1"
+                  v-model="house.city"
+                  required
+                  placeholder="Enter city"
+                ></b-form-input>
+              </b-form-group>
 
-      <div>
-        <label for="example-datepicker">Available From:</label>
-        <b-form-datepicker id="example-datepicker" v-model="house.av_from" class="mb-2"></b-form-datepicker>
-      </div>
+            <div>
+              <label for="example-datepicker2">Available To:</label>
+              <b-form-datepicker id="example-datepicker2" v-model="house.av_to" class="mb-2"> 
+              </b-form-datepicker>
+            </div>
+            <br>
 
-
-      <div>
-        <label for="example-datepicker2">Available To:</label>
-        <b-form-datepicker id="example-datepicker2" v-model="house.av_to" class="mb-2"></b-form-datepicker>
-      </div>
-
-
-       <b-form-group
-        id="input-group-1"
-        label="City:"
-        label-for="input-1"
-      >
-        <b-form-input
-          id="input-1"
-          v-model="house.city"
-          required
-          placeholder="Enter city"
-        ></b-form-input>
-      </b-form-group>
-
- <b-form-file
-     @change="onFileSelected"
-      v-model="house.image"
-      placeholder="Choose an image or drop it here..."
-      drop-placeholder="Drop image here..."
-    ></b-form-file>
-    
-
-     <b-form-group label="Garage:">
-      <b-form-radio-group class="pt-2">
-        <b-form-radio v-model="house.garage" value = "true">True</b-form-radio>
-        <b-form-radio v-model="house.garage" value = "false">False</b-form-radio>
-      </b-form-radio-group>
-    </b-form-group>
-
-
-
-
-    <b-form-group label="Wifi:">
-      <b-form-radio-group class="pt-2">
-        <b-form-radio v-model="house.wifi" value = "true">True</b-form-radio>
-        <b-form-radio v-model="house.wifi" value = "false">False</b-form-radio>
-      </b-form-radio-group>
-    </b-form-group>
-
-    <b-form-group label="Aircondition:">
-      <b-form-radio-group class="pt-2">
-        <b-form-radio v-model="house.aircondition" value = "true">True</b-form-radio>
-        <b-form-radio v-model="house.aircondition" value = "false">False</b-form-radio>
-      </b-form-radio-group>
-    </b-form-group>
-
-    <b-form-group id="input-group-2" label="House Type:" label-for="input-2">
-          <b-form-select v-model="house.type" :options="house.options"> </b-form-select> 
-      </b-form-group>   
-
-
-   <b-form-group id="input-group-2" label="Number of peoples:" label-for="input-2">
-        <b-form-input
-          id="input-2"
-          type="number"
-          v-model="house.people_num"
-          required
-          placeholder="Enter number of peoples"
-        ></b-form-input>
-      </b-form-group>
-
-
- <b-form-group id="input-group-2" label="Max number of peoples:" label-for="input-2">
-        <b-form-input
-          id="input-2"
-          type="number"
-          v-model="house.people_max"
-          required
-          placeholder="Enter max number of people"
-        ></b-form-input>
-      </b-form-group>
-
-    
-</div>
-   
- 
-</div>
-
-     </b-form>
-         
+            <b-form-file
+              @change="onFileSelected"
+              v-model="house.image"
+              placeholder="Choose an image or drop it here..."
+              drop-placeholder="Drop image here..."
+            ></b-form-file>
+          
+          </div> 
+        </div>
+        </b-form>
      </b-container>
 
-
-              <b-container>
-
-               <div id="map" class="map">
-                
-               </div>
-             </b-container> 
+      <b-container>
+        <div id="map" class="map">
+        </div>
+      </b-container> 
        
       <b-button  v-on:click="onSubmit" variant="primary">Submit</b-button>
     
-
-    </div>
+  </div>
 </template>
 
 
