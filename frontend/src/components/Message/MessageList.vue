@@ -9,7 +9,8 @@
                 <b>Send Date: </b> {{ mess.send_date }}
               </div>
               <div class="col-md-6 pt-3">
-                  <router-link :to="{name: 'send_message'}" class="btn btn-success">Reply</router-link>
+                  <router-link :to="{name: 'reply_message',params: { house_id: mess.house,
+                    sender_id: mess.sender }}" class="btn btn-success">Reply</router-link>
             </div>
           </div>
               
@@ -25,7 +26,7 @@ import axios from 'axios';
 
 export default { 
   name: 'MessageList',
- 
+    
   data(){
     return {
       messages: [],

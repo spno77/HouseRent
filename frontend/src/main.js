@@ -29,6 +29,7 @@ import ReviewList from './components/Review/ReviewList.vue'
 
 import SendMessage from './components/Message/SendMessage.vue'
 import MessageList from './components/Message/MessageList.vue'
+import ReplyMessage from './components/Message/ReplyMessage.vue'
 
 import store from './store/index.js'
 
@@ -191,6 +192,12 @@ const routes = [
 		path: '/my_messages/',
 		name: 'my_messages',
 		component: MessageList,
+		props: true
+	},
+	{
+		path: '/reply_message/:house_id/:receiver_id/',
+		name: 'reply_message',
+		component: ReplyMessage,
 		props: true
 	},
 
