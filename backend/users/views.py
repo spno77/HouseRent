@@ -23,11 +23,14 @@ class UserDetail(generics.RetrieveUpdateDestroyAPIView):
 
 class MessageList(generics.ListCreateAPIView):
 	#permission_classes = [permissions.IsAdminUser,]
-	queryset = Message.objects.all()
 	serializer_class = MessageSerializer
 
 	def perform_create(self, serializer):
 		serializer.save(sender=self.request.user)
+
+	def get_queryset(self):
+		receiver = self.request.user
+		return Message.objects.filter(receiver=receiver)
 
 class MessageDetail(generics.RetrieveUpdateDestroyAPIView):
 	#permission_classes = [IsOwnerOrAdmin,]

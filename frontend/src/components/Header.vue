@@ -35,7 +35,11 @@
           
             <b-dropdown-item  v-if="isLoggedIn===true"
             :to="{name: 'reservationlist'}"> My Reservations
-            </b-dropdown-item> 
+            </b-dropdown-item>
+
+            <b-dropdown-item  v-if="isLoggedIn===true"
+            :to="{name: 'my_messages'}"> My Messages
+            </b-dropdown-item>  
 
 
             <b-dropdown-item  v-if="isLoggedIn===true"

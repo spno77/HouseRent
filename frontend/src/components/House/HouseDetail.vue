@@ -126,6 +126,7 @@
     <tr><b>Host: </b></tr> <br>
     
     <p> Username:        {{ house.host.username }}        </p>
+    <router-link :to="{name: 'send_message', params: { id: this.idd }}" class="btn btn-success">Send Message</router-link>
 
    </div>
 
