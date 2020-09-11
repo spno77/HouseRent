@@ -5,8 +5,8 @@ from django.contrib.auth import get_user_model
 from rest_framework import generics
 from rest_framework.views import APIView
 
-from .models import User
-from .serializers import UserSerializer 
+from .models import User,Message
+from .serializers import UserSerializer,MessageSerializer 
 from rest_framework.response import Response
 from rest_framework import status
 
@@ -20,3 +20,16 @@ class UserDetail(generics.RetrieveUpdateDestroyAPIView):
 	#permission_classes = [IsOwnerOrAdmin,]
 	queryset = get_user_model().objects.all()
 	serializer_class = UserSerializer
+
+class MessageList(generics.ListCreateAPIView):
+	#permission_classes = [permissions.IsAdminUser,]
+	queryset = Message.objects.all()
+	serializer_class = MessageSerializer
+
+	def perform_create(self, serializer):
+		serializer.save(sender=self.request.user)
+
+class MessageDetail(generics.RetrieveUpdateDestroyAPIView):
+	#permission_classes = [IsOwnerOrAdmin,]
+	queryset = Message.objects.all()
+	serializer_class = MessageSerializer

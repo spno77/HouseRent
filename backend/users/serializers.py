@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User
+from .models import User,Message
 from django.contrib.auth import get_user_model
 
 from allauth.account.adapter import get_adapter
@@ -35,7 +35,11 @@ class CustomRegisterSerializer(RegisterSerializer):
 
 
 
-
+class MessageSerializer(serializers.ModelSerializer):
+	
+	class Meta:
+		model = Message
+		fields = ['id','sender','receiver','house','message','send_date']
 
 
 

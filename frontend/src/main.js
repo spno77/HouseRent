@@ -27,6 +27,9 @@ import ReservationList from './components/Reservation/ReservationList.vue'
 import ReviewAdd from './components/Review/ReviewAdd.vue'
 import ReviewList from './components/Review/ReviewList.vue'
 
+import SendMessage from './components/Message/SendMessage.vue'
+import MessageList from './components/Message/MessageList.vue'
+
 import store from './store/index.js'
 
 import 'bootstrap/dist/css/bootstrap.css'
@@ -176,6 +179,18 @@ const routes = [
 		path: '/admin/',
 		name: 'adminpanel',
 		component: AdminPanel,
+		props: true
+	},
+	{
+		path: '/send_message/',
+		name: 'send_message',
+		component: SendMessage,
+		props: true
+	},
+	{
+		path: '/my_messages/',
+		name: 'my_messages',
+		component: MessageList,
 		props: true
 	},
 
