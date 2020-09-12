@@ -92,11 +92,15 @@
           },
            {headers: {'Authorization': 'JWT ' + this.tuser.token}}  
           )
+          .then( response => {
+             alert("Your Review has been added successfully !")
+             this.$router.push('/')
+          })
           .catch((err) => {
              console.log(err.response.data);
            });
 
-        this.$router.push('/')
+        
       },
       
     },
