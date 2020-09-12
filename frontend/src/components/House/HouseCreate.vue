@@ -223,7 +223,7 @@
     data() {
       return {
         
-        house:{  
+        house: {  
           title: '',
           description: '',
           cost: '',
@@ -251,11 +251,12 @@
           { value: 'private_room', text: 'Private Room' },
           { value: 'shared_room',  text: 'Shared  Room' },
          ],
-         people_num: '',
-         people_max: '',
+          people_num: '',
+          people_max: '',
+          plus_cost: '',
+          rules:'',
         },
-        plus_cost: '',
-        rules:'',
+        
 
         map: null,
         tileLayer: null,
