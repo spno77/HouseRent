@@ -3,10 +3,14 @@
    <b-container>
 
     <h1 class="ti"> Houses Info </h1>
+    <div class="overflow-auto">
+    
+    <b-pagination v-model="currentPage" :total-rows="rows" :per-page="perPage"> 
+    </b-pagination>
      <b-row  align-v="center">
-  
+      
+      <b-col md="3" v-for="(house, index) in houses.slice(this.perPage*(currentPage-1),this.perPage*(currentPage))" :key="index">
        
-        <b-col md="3" v-for="house in houses" :key="house.id">
           <b-card
             bg-variant="dark" text-variant="white"
             :title="house.title"
@@ -31,7 +35,9 @@
         </b-col> 
      
     </b-row>
-     
+      <b-pagination v-model="currentPage" :total-rows="rows" :per-page="perPage"> 
+      </b-pagination>
+     </div>
   </b-container>
   </div>
 </template>
@@ -48,17 +54,19 @@ export default {
   data(){
    return {
      idd : this.$route.params.id,
-     
-    
+      perPage: 5,
+      currentPage: 1,
     }
-
   },
 
   computed:{
     ...mapGetters([
         'houses',
         'search_term'
-      ])
+      ]),
+    rows() {
+        return this.houses.length
+      }
   },
 
   mounted(){
