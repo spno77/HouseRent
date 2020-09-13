@@ -21,6 +21,7 @@ const state = {
 		city: '',
 		book_from: '',
 		book_to: '',
+		people_num: '',
 	},
 
 	images:[] , 
@@ -74,7 +75,8 @@ const actions = {
 	},
 	searchHouses({ commit },search_term) {
 		axios.get('http://127.0.0.1:8000/api/v1/houses/?country='+ search_term.country 
-					+'&city='+search_term.city+'&book_from='+search_term.book_from
+					+'&city='+search_term.city+'&people_num='+search_term.people_num
+					+'&book_from='+search_term.book_from
 					+'&book_to='+search_term.book_to+ '&ordering=cost')
 		.then((response) => {
 			commit('UPDATE_HOUSES', response.data)

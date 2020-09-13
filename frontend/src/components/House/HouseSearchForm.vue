@@ -20,6 +20,16 @@
         ></b-form-input>
       </b-form-group>
 
+      <b-form-group id="input-group-2" label="Number of people:" label-for="input-2">
+          <b-form-input
+            id="input-2"
+            type="number"
+            v-model="search.people_num"
+            required
+            placeholder="Enter number of people"
+            ></b-form-input>
+          </b-form-group>
+
 
   <div class="row">
       <div class="col-md-6">
@@ -58,6 +68,7 @@
           city: '',
           book_from: '',
           book_to: '',
+          people_num: '',
         },
 
         show: true

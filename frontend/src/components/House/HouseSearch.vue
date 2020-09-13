@@ -21,9 +21,13 @@
             style="max-width: 20rem;"
             class="mb-2"
            >
-              <b-card-text>
-              <b>cost: {{ house.cost }} $ </b> <br>
+            
+            <b-card-text>
+              <b>Cost: {{ house.cost }} $ </b> <br>
+              <b>Type: {{ house.house_type }} </b><br>
+              <b>Beds number :{{ house.beds }} </b><br>
               <b>Reviews :{{ house.reviews.length }} </b><br>
+
               <div v-show="house.reviews.length > 0">
               <b>Avg rating : {{ avg_rating(house) }} </b>
               </div>
