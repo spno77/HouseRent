@@ -126,8 +126,11 @@
     <tr><b>Host: </b></tr> <br>
     
     <p> Username:        {{ house.host.username }}        </p>
-    <router-link :to="{name: 'send_message', params: { id: this.idd }}" class="btn btn-success">Send Message</router-link>
-
+    <div v-if="isLoggedIn===true && house.host.username !== tuser.user.username">
+      <router-link :to="{name: 'send_message', params: { id: this.idd }}" 
+        class="btn btn-success">Send Message
+      </router-link>
+     </div> 
    </div>
 
    <span class="col-md-5 imgContainer">

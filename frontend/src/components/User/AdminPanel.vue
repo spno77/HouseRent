@@ -11,6 +11,7 @@
            <b-table striped hover :items="users"></b-table>
           
           </div>
+          
          </b-container>
   
        

@@ -67,6 +67,10 @@
           },
            {headers: {'Authorization': 'JWT ' + this.tuser.token}}  
           )
+          .then( response => {
+             alert("Message sent successfully to user: " + this.house.host.username )
+             this.$router.push('/')     
+          })
           .catch((err) => {
              console.log(err.response.data);
            });

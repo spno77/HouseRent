@@ -4,7 +4,7 @@
  <b-list-group v-for="mess in messages" :key="mess.id">
    <b-list-group-item variant="info"> 
           <div class = "row">
-             <div class="col-md-6"> 
+             <div class="col-md-6">
                 <b>Message:</b> {{ mess.message }} <br>
                 <b>Send Date: </b> {{ mess.send_date }}
               </div>

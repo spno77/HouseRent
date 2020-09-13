@@ -1,6 +1,5 @@
 <template>
     <div>
-      <app />
         <div>
           <h1 class="ti">   Reserve House  </h1>
           <b-container>   
@@ -113,10 +112,14 @@
               },
                {headers: {'Authorization': 'JWT ' + this.tuser.token}}  
               )
+              .then( response => {
+                alert("Reservation was successful")
+                this.$router.push('/')    
+              })
               .catch((err) => {
                  console.log(err.response.data);
               });
-            this.$router.push('/')  
+             
           }
         }
         else{
