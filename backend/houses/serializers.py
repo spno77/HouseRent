@@ -60,6 +60,9 @@ class HouseSerializer(serializers.ModelSerializer):
 		instance.rules          = validated_data.get('rules',instance.rules)
 		instance.plus_cost      = validated_data.get('plus_cost',instance.plus_cost)
 
+		instance.av_from        = validated_data.get('av_from',instance.av_from)
+		instance.av_to          = validated_data.get('av_to',instance.av_to)
+
 		instance.save()
 		return instance
 		
