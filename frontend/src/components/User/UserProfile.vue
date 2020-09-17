@@ -1,7 +1,6 @@
 <template>
  
  <div class="container">
- <app />
  <h1>  Profile </h1>
   <b-jumbotron header-level="4" >
     
@@ -13,7 +12,11 @@
     <p> <b>Firstname:</b>    {{ user.firstname }} </p>
     <p> <b>Lastname:</b>     {{ user.lastname }}  </p>
     <p> <b>Phone:</b>        {{ user.phone }}     </p>
-    <p> <b>Role:</b>         {{ user.role }}      </p>
+    
+    <p v-if="user.is_staff===true"> <b>Role:</b>         admin      </p>
+  
+    <p v-else> <b>Role:</b>         {{user.role}}      </p>
+
     <div v-if="user.is_staff===true">
         <router-link :to="{name: 'adminpanel'}" class="btn btn-primary">AdminPanel</router-link>
      </div>

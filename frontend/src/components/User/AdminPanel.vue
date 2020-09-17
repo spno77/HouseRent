@@ -6,10 +6,21 @@
          <b-container>
          <button @click="getUsers()" class="btn btn-success">Show Users</button>
          <button @click="export2txt()" class="btn btn-primary">Export data to local txt file</button>
-	
+  
           <div>
-           <b-table striped hover :items="users"></b-table>
-          
+            <b-table striped hover :items="users" :fields="fields">
+               <template v-slot:cell(is_approved)="row">
+                 <b-form-group>
+                   <input type="checkbox" v-model="row.item.is_approved" />
+                 </b-form-group>
+               </template>
+              <template v-slot:cell(approve)="row">
+                <button size="sm" @click="editUser(row.item.id)" class="btn btn-primary">
+                  Approve
+                </button>
+              </template>
+
+            </b-table>          
           </div>
           
          </b-container>
@@ -33,6 +44,8 @@
         users:  [],
         houses: [],
         show: true,
+        fields: ['id','username','email','firstname','lastname',
+    'is_staff','phone','role','is_approved','approve']
       }
     },
     computed:{
@@ -55,6 +68,24 @@
            .then(response=>(this.users = response.data))  
        },
 
+       editUser(id) {
+        id -= 1
+        alert("user "+ this.users[id].username +" is approved")
+        axios
+          .put('http://127.0.0.1:8000/api/v1/users/'+ this.users[id].id + '/',{
+            is_approved :  this.users[id].is_approved,
+            username :    this.users[id].username,
+            email:       this.users[id].email,
+            firstname:   this.users[id].firstname,
+            lastname:    this.users[id].lastname,
+            phone:       this.users[id].phone,
+
+          })
+          .catch((err) => {
+           console.log(err.response.data);
+           });
+
+      },
 
        export2txt() {
          const a = document.createElement("a");
