@@ -112,6 +112,7 @@
         lastname: '',
         phone: '',
         image: '',
+        is_approved: "true",
       }, 
       show: true
       
@@ -136,6 +137,12 @@
         fd.append('password2',this.user.password2)
         fd.append('role'     ,this.user.role)
         fd.append('image'    ,this.user.image,this.user.image.name)
+       
+        if(this.user.role === "host"){
+          fd.append('is_approved',"false")
+        }else{
+          fd.append('is_approved',this.user.is_approved)
+        }
 
         axios
           .post('http://127.0.0.1:8000/api/v1/rest-auth/registration/',fd)

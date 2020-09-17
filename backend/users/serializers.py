@@ -21,6 +21,7 @@ class CustomRegisterSerializer(RegisterSerializer):
 	phone     = serializers.CharField()
 	image     = serializers.ImageField()
 	role      = serializers.ChoiceField(choices=User.ROLE_CHOICES)
+	is_approved = serializers.BooleanField()
 
 
 	def get_cleaned_data(self):
@@ -30,6 +31,7 @@ class CustomRegisterSerializer(RegisterSerializer):
 		data_dict['phone']     = self.validated_data.get('phone', '')
 		data_dict['image']     = self.validated_data.get('image', '')
 		data_dict['role']      = self.validated_data.get('role', '')
+		data_dict['is_approved'] = self.validated_data.get('is_approved','')
 
 		return data_dict
 
