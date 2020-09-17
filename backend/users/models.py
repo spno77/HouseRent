@@ -57,7 +57,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 	phone     =   models.CharField(max_length=12,null=False)
 	image     =   models.ImageField(default='blank-user.png',upload_to='images')		
 	role      =   models.CharField(max_length=10,choices=ROLE_CHOICES,default=GUEST)
-	
+	is_approved = models.BooleanField(default=True)
 	
 	objects = UserManager()
 

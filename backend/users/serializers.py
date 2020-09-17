@@ -13,7 +13,7 @@ class UserSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = get_user_model()
 		fields = ['id','username','email','firstname','lastname',
-		'is_staff','phone','image','role',]
+		'is_staff','phone','image','role','is_approved']
 
 class CustomRegisterSerializer(RegisterSerializer):
 	firstname = serializers.CharField()

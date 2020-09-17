@@ -12,6 +12,7 @@ class CustomAccountAdapter(DefaultAccountAdapter):
 		user.phone      = data.get('phone')
 		user.image      = data.get('image')
 		user.role       = data.get('role')
+		user.is_approved= data.get('is_approved')
 
 		user.save()
 		return user	
