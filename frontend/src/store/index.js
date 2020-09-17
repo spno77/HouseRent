@@ -83,10 +83,15 @@ const actions = {
 		});
 	},
 	loginUser ({ commit }, user) {
-		axios.post('http://127.0.0.1:8000/api/v1/rest-auth/login/',user).then((response) => {
-		commit('LOGIN_USER', response.data)
-		});
-		commit('iS_LOGGED_IN')
+		axios.post('http://127.0.0.1:8000/api/v1/rest-auth/login/',user)
+		.then((response) => {
+			if(response.data.user.is_approved){
+				commit('LOGIN_USER', response.data)
+				commit('iS_LOGGED_IN')
+			}else{
+				alert("Your approvement is pending")
+			}
+		});	
 	},
 	logoutUser({ commit }){
 		axios.post('http://127.0.0.1:8000/api/v1/rest-auth/logout/').then((response) => {
