@@ -18,19 +18,26 @@
         ></b-form-input>
       </b-form-group>
 
-          <b-form-group
-            id="input-group-1"
-            label="Cost:"
-            label-for="input-1"
-          >
-            <b-form-input
-              id="input-1"
-              type="number"
-              v-model="house.cost"
-              required
-              placeholder="Enter cost"
-            ></b-form-input>
-          </b-form-group>
+        <div class="row">
+          <div class="col-md-6">
+            <p>  House Cost :           <b> {{ house.cost }} $    </b> </p> 
+            <p>  Extra Cost per person: <b> {{ house.plus_cost }} $   </b> </p> 
+          </div>
+
+          <div class="col-md-6">
+            <p>  Number of people:      <b> {{ house.people_num }}  </b> </p> 
+            <p>  Max number of people:  <b> {{ house.people_max }}  </b> </p> 
+          </div>
+        </div>  
+
+      <b-form-group id="input-group-2" label="Number of People:" label-for="input-1">
+         <b-form-input
+          id="input-1"
+          v-model="reservation.people"
+          required
+          placeholder="Enter number of people"
+         ></b-form-input>
+      </b-form-group>
 
            <div class="row">
       <div class="col-md-6">
@@ -70,6 +77,7 @@
         reservation:{
           reserve_in: '',
           reserve_out: '',
+          people: ''
         },
         house:{
           title: '',
@@ -108,7 +116,8 @@
                 cost:         this.finalCost,
                 reserve_in:   this.reservation.reserve_in,
                 reserve_out:  this.reservation.reserve_out,
-                tenant:       this.tuser.user.id
+                tenant:       this.tuser.user.id,
+                people:       this.reservation.people
               },
                {headers: {'Authorization': 'JWT ' + this.tuser.token}}  
               )
@@ -143,9 +152,17 @@
       calculateFinalCost(){
         
         var days = this.datediff(this.reservation.reserve_in, this.reservation.reserve_out) 
-        
-        this.finalCost = this.house.cost * days
-        
+        if(this.reservation.people <= this.house.people_num) {
+          this.finalCost = this.house.cost * days
+        }
+        if(this.reservation.people > this.house.people_num && 
+          this.reservation.people < this.house.people_max ){
+          
+          var extraPeople = this.reservation.people - this.house.people_num
+
+          this.finalCost = this.house.cost * days + this.house.plus_cost * days * extraPeople
+        }
+
         return this.finalCost
       },
 

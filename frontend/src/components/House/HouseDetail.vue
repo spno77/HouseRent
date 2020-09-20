@@ -38,8 +38,8 @@
     <tr>   </tr><br>
     <br>
      <p> Max number of people:  {{ house.people_max }} </p>
-     <p> Cost :                 {{ house.cost }} $ </p>
-     <p> Extra Cost:            {{ house.plus_cost }}</p>
+     <p> Cost :                 {{ house.cost }} $     </p>
+     <p> Extra Cost:            {{ house.plus_cost }} $ </p>
     
     </div>
 

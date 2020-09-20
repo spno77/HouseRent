@@ -12,4 +12,4 @@ class ReservationSerializer(serializers.ModelSerializer):
 
 	class Meta:
 		model = Reservation
-		fields = ['id','cost','reserve_in','reserve_out','tenant','house',]
+		fields = ['id','cost','people','reserve_in','reserve_out','tenant','house',]
