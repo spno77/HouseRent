@@ -36,6 +36,18 @@ class HouseDetail(generics.RetrieveUpdateDestroyAPIView):
 	queryset = House.objects.all()
 	serializer_class = HouseSerializer
 
+
+class HostHouseList(generics.ListCreateAPIView):
+	serializer_class = HouseSerializer
+	filter_backends = [filters.OrderingFilter,]
+
+	ordering_fields = ['cost']
+
+	def get_queryset(self):
+		host = self.request.user
+		return House.objects.filter(host=host)
+
+
 '''
 class HouseImageList(generics.ListCreateAPIView):
 	queryset = HouseImage.objects.all()

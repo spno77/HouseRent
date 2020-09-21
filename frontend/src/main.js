@@ -3,40 +3,41 @@ import App from './App.vue'
 
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 
-import HouseDetail from './components/House/HouseDetail.vue' 
-import HouseList   from './components/House/HouseList.vue'
-import HouseDelete   from './components/House/HouseDelete.vue'
-import HouseCreate   from './components/House/HouseCreate.vue'
-import HouseEdit   from './components/House/HouseEdit.vue'
-import HouseSearch   from './components/House/HouseSearch.vue'
-import HouseSearchForm   from './components/House/HouseSearchForm.vue'
+import HouseDetail       from  './components/House/HouseDetail.vue' 
+import HouseList         from  './components/House/HouseList.vue'
+import HouseDelete       from  './components/House/HouseDelete.vue'
+import HouseCreate       from  './components/House/HouseCreate.vue'
+import HouseEdit         from  './components/House/HouseEdit.vue'
+import HouseSearch       from  './components/House/HouseSearch.vue'
+import HouseSearchForm   from  './components/House/HouseSearchForm.vue'
 import AddHouseImages    from  './components/House/AddHouseImages.vue'
+import HostHouses        from  './components/House/HostHouses.vue'
 
-import Header   from './components/Header.vue'
+import Header            from './components/Header.vue'
 
-import RegisterUser from './components/User/RegisterUser.vue'
-import LoginUser from './components/User/LoginUser.vue'
-import UserProfile from './components/User/UserProfile.vue'
-import UserEdit from './components/User/UserEdit.vue'
-import AdminPanel from './components/User/AdminPanel.vue'
+import RegisterUser      from './components/User/RegisterUser.vue'
+import LoginUser         from './components/User/LoginUser.vue'
+import UserProfile       from './components/User/UserProfile.vue'
+import UserEdit          from './components/User/UserEdit.vue'
+import AdminPanel        from './components/User/AdminPanel.vue'
 
-import Reservation from './components/Reservation/Reservation.vue'
+import Reservation       from './components/Reservation/Reservation.vue'
 import ReservationDetail from './components/Reservation/ReservationDetail.vue'
-import ReservationList from './components/Reservation/ReservationList.vue'
+import ReservationList   from './components/Reservation/ReservationList.vue'
 
-import ReviewAdd from './components/Review/ReviewAdd.vue'
-import ReviewList from './components/Review/ReviewList.vue'
+import ReviewAdd         from './components/Review/ReviewAdd.vue'
+import ReviewList        from './components/Review/ReviewList.vue'
 
-import SendMessage from './components/Message/SendMessage.vue'
-import MessageList from './components/Message/MessageList.vue'
-import ReplyMessage from './components/Message/ReplyMessage.vue'
+import SendMessage       from './components/Message/SendMessage.vue'
+import MessageList       from './components/Message/MessageList.vue'
+import ReplyMessage      from './components/Message/ReplyMessage.vue'
 
 import store from './store/index.js'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
-import axios from 'axios'
+import axios    from 'axios'
 import VueAxios from 'vue-axios'
 
 import VueRouter from 'vue-router'
@@ -114,6 +115,12 @@ const routes = [
 		path: '/houses/search/form',
 		name: 'house_search_form',
 		component: HouseSearchForm,
+		props: true
+	},
+	{
+		path: '/host/houses',
+		name: 'host_houses',
+		component: HostHouses,
 		props: true
 	},
 	{

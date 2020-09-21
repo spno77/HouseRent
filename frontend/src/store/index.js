@@ -7,6 +7,7 @@ Vue.use(Vuex)
 
 const state = {
 	houses: [],
+	host_houses: [],
 	user: {
 		username: '',
 		password: '',
@@ -30,6 +31,10 @@ const state = {
 const mutations = {
 	UPDATE_HOUSES (state,payload) {
 		state.houses = payload
+	},
+
+	UPDATE_HOST_HOUSES (state,payload) {
+		state.host_houses = payload
 	},
 
 	UPDATE_HOUSE_IMAGES (state,payload) {
@@ -68,8 +73,16 @@ const actions = {
 		commit('UPDATE_HOUSES', response.data)
 		});
 	},
+	getHostHouses({ commit }){
+		axios.get('http://127.0.0.1:8000/api/v1/host/houses/?ordering=cost/',
+		{headers: {'Authorization': 'JWT ' + state.tuser.token}} )
+		.then((response) => {
+			commit('UPDATE_HOST_HOUSES', response.data)
+		});
+	},
 	getHousesImages ({ commit }) {
-		axios.get('http://127.0.0.1:8000/api/v1/houses/images').then((response) => {
+		axios.get('http://127.0.0.1:8000/api/v1/houses/images'
+			).then((response) => {
 		commit('UPDATE_HOUSE_IMAGES', response.data)
 		});
 	},
@@ -115,6 +128,7 @@ const actions = {
 
 const getters = {
 	houses: 	  state => state.houses,
+	host_houses:  state => state.host_houses,
 	house_images: state => state.images,
 	tuser:  	  state => state.user,
 	isLoggedIn:   state => state.isLoggedIn,

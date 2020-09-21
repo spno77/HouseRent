@@ -41,6 +41,9 @@
             :to="{name: 'my_messages'}"> My Messages
             </b-dropdown-item>  
 
+            <b-dropdown-item  v-if="isLoggedIn===true && tuser.user.role === 'host'"
+            :to="{name: 'host_houses'}"> My Listings
+            </b-dropdown-item>  
 
             <b-dropdown-item  v-if="isLoggedIn===true"
             :to="{name: 'profile', params: { id: tuser.user.id }}"> Profile
