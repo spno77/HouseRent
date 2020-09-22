@@ -28,7 +28,8 @@ class HouseList(generics.ListCreateAPIView):
 		book_from = self.request.query_params.get('book_from', None)
 		book_to   = self.request.query_params.get('book_to', None)
 		if book_from is not None:
-			queryset = queryset.filter(av_from__lte=book_from,av_to__gte=book_to)
+			queryset = queryset.filter(av_from__lte=book_from,av_to__gte=book_to).exclude(
+				reservations__reserve_in__lte=book_to,reservations__reserve_out__gte=book_from)
 		return queryset
 
 

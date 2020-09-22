@@ -9,7 +9,7 @@ from django.contrib.auth import get_user_model
 class ReservationSerializer(serializers.ModelSerializer): 
 	tenant = serializers.PrimaryKeyRelatedField(source='tenant.username',queryset=get_user_model().objects.all())
 	house = serializers.PrimaryKeyRelatedField(source='house.id',queryset=House.objects.all())
-
+	
 	class Meta:
 		model = Reservation
 		fields = ['id','cost','people','reserve_in','reserve_out','tenant','house',]
