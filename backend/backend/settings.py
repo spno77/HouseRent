@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'rest_auth.registration',
     'django_filters',
+    'django_extensions',
 
     #local
     'houses',

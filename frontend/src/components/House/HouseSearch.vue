@@ -58,7 +58,7 @@ export default {
   data(){
    return {
       idd : this.$route.params.id,
-      perPage: 5,
+      perPage: 12,
       currentPage: 1,
     }
   },
