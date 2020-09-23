@@ -95,7 +95,7 @@
 
     mounted(){
       axios
-        .get('http://127.0.0.1:8000/api/v1/houses/'+ this.idd)
+        .get('https://127.0.0.1:8000/api/v1/houses/'+ this.idd)
         .then( response => {
            this.house = response.data
         })
@@ -111,7 +111,7 @@
         if(this.compareDates() === true){
           if(this.finalCost > 0){
             axios
-              .post('http://127.0.0.1:8000/api/v1/reservations/',{
+              .post('https://127.0.0.1:8000/api/v1/reservations/',{
                 house:        this.house.id,
                 cost:         this.finalCost,
                 reserve_in:   this.reservation.reserve_in,

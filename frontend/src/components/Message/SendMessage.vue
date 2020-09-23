@@ -44,7 +44,7 @@
 
     mounted() {
         axios
-          .get('http://127.0.0.1:8000/api/v1/houses/'+ this.idd,
+          .get('https://127.0.0.1:8000/api/v1/houses/'+ this.idd,
           {headers: {'Authorization': 'JWT ' + this.tuser.token}}  
           )
           .then( response => {
@@ -59,7 +59,7 @@
       
       onSubmit(){
         axios
-          .post('http://127.0.0.1:8000/api/v1/messages/',{
+          .post('https://127.0.0.1:8000/api/v1/messages/',{
             house:        this.house.id,
             sender:       this.tuser.user.id,
             receiver:     this.house.host.id,

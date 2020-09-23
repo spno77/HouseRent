@@ -49,7 +49,7 @@ export default {
 
    mounted(){
       axios
-        .get('http://127.0.0.1:8000/api/v1/houses/'+ this.idd)
+        .get('https://127.0.0.1:8000/api/v1/houses/'+ this.idd)
         .then( response => {
            this.reviews = response.data.reviews
         })

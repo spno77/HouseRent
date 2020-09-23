@@ -68,7 +68,7 @@
 
     mounted() {
         axios
-          .get('http://127.0.0.1:8000/api/v1/reservations/'+ this.idd,
+          .get('https://127.0.0.1:8000/api/v1/reservations/'+ this.idd,
           {headers: {'Authorization': 'JWT ' + this.tuser.token}}  
           )
           .then( response => {
@@ -83,7 +83,7 @@
       
       onSubmit(){
         axios
-          .post('http://127.0.0.1:8000/api/v1/reviews/',{
+          .post('https://127.0.0.1:8000/api/v1/reviews/',{
             content:      this.review.content,
             rating:       this.review.rating,
             reviewer:     this.tuser.user.id,

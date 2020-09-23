@@ -51,7 +51,7 @@ export default {
 
    mounted(){
     axios
-      .get('http://127.0.0.1:8000/api/v1/messages/',
+      .get('https://127.0.0.1:8000/api/v1/messages/',
        {headers: {'Authorization': 'JWT ' + this.tuser.token}}  
       )
       .then(response => (this.messages = response.data))
