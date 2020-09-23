@@ -72,7 +72,7 @@ export default {
 
   mounted(){
     axios
-      .get('http://127.0.0.1:8000/api/v1/host/houses/?ordering=cost',
+      .get('https://127.0.0.1:8000/api/v1/host/houses/?ordering=cost',
        {headers: {'Authorization': 'JWT ' + this.tuser.token}}  
       )
       .then(response => (this.houses = response.data))

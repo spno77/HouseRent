@@ -344,7 +344,7 @@
 
 
         axios
-          .post('http://127.0.0.1:8000/api/v1/houses/',fd,
+          .post('https://127.0.0.1:8000/api/v1/houses/',fd,
            {headers: {'Authorization': 'JWT ' + this.tuser.token}}  
           )
           .catch((err) => {

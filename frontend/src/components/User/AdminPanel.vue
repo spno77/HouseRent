@@ -57,7 +57,7 @@
 
      mounted() {
        axios
-         .get('http://127.0.0.1:8000/api/v1/houses/')
+         .get('https://127.0.0.1:8000/api/v1/houses/')
          .then(response=>(this.houses = response.data))       
     },
 
@@ -65,7 +65,7 @@
 
       getUsers(){
          axios
-           .get('http://127.0.0.1:8000/api/v1/users/',
+           .get('https://127.0.0.1:8000/api/v1/users/',
             {headers: {'Authorization': 'JWT ' + this.tuser.token}}
             )
            .then(response=>(this.users = response.data))

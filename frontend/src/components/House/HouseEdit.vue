@@ -253,7 +253,7 @@
 
     mounted(){
       axios
-        .get('http://127.0.0.1:8000/api/v1/houses/'+ this.idd)
+        .get('https://127.0.0.1:8000/api/v1/houses/'+ this.idd)
         .then( response => {
            this.house = response.data
         })
@@ -296,7 +296,7 @@
         
      editHouse() {
         axios
-          .put('http://127.0.0.1:8000/api/v1/houses/'+ this.idd+ '/',{
+          .put('https://127.0.0.1:8000/api/v1/houses/'+ this.idd+ '/',{
             title :       this.house.title,
             description:  this.house.description,
             rooms:        this.house.rooms,

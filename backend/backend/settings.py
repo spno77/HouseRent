@@ -187,3 +187,5 @@ REST_AUTH_REGISTER_SERIALIZERS = {
 
 
 ACCOUNT_ADAPTER = 'users.adapter.CustomAccountAdapter'
+
+ACCOUNT_DEFAULT_HTTP_PROTOCOL='https' 

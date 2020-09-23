@@ -53,7 +53,7 @@
     
     mounted(){
       axios
-        .get(`http://127.0.0.1:8000/api/v1/users/${ this.id }`)
+        .get(`https://127.0.0.1:8000/api/v1/users/${ this.id }`)
         .then(response => (this.user = response.data))
     }
 

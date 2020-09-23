@@ -69,25 +69,25 @@ const mutations = {
 
 const actions = {
 	getHouses ({ commit }) {
-		axios.get('http://127.0.0.1:8000/api/v1/houses/?ordering=cost').then((response) => {
+		axios.get('https://127.0.0.1:8000/api/v1/houses/?ordering=cost').then((response) => {
 		commit('UPDATE_HOUSES', response.data)
 		});
 	},
 	getHostHouses({ commit }){
-		axios.get('http://127.0.0.1:8000/api/v1/host/houses/?ordering=cost/',
+		axios.get('https://127.0.0.1:8000/api/v1/host/houses/?ordering=cost/',
 		{headers: {'Authorization': 'JWT ' + state.tuser.token}} )
 		.then((response) => {
 			commit('UPDATE_HOST_HOUSES', response.data)
 		});
 	},
 	getHousesImages ({ commit }) {
-		axios.get('http://127.0.0.1:8000/api/v1/houses/images'
+		axios.get('https://127.0.0.1:8000/api/v1/houses/images'
 			).then((response) => {
 		commit('UPDATE_HOUSE_IMAGES', response.data)
 		});
 	},
 	searchHouses({ commit },search_term) {
-		axios.get('http://127.0.0.1:8000/api/v1/houses/?country='+ search_term.country 
+		axios.get('https://127.0.0.1:8000/api/v1/houses/?country='+ search_term.country 
 					+'&city='+search_term.city+'&people_num='+search_term.people_num
 					+'&book_from='+search_term.book_from
 					+'&book_to='+search_term.book_to+ '&ordering=cost')
@@ -96,7 +96,7 @@ const actions = {
 		});
 	},
 	loginUser ({ commit }, user) {
-		axios.post('http://127.0.0.1:8000/api/v1/rest-auth/login/',user)
+		axios.post('https://127.0.0.1:8000/api/v1/rest-auth/login/',user)
 		.then((response) => {
 			if(response.data.user.is_approved){
 				commit('LOGIN_USER', response.data)
@@ -107,7 +107,7 @@ const actions = {
 		});	
 	},
 	logoutUser({ commit }){
-		axios.post('http://127.0.0.1:8000/api/v1/rest-auth/logout/').then((response) => {
+		axios.post('https://127.0.0.1:8000/api/v1/rest-auth/logout/').then((response) => {
 		commit('LOGIN_USER',null)
 		});
 		commit('iS_NOT_LOGGED_IN')

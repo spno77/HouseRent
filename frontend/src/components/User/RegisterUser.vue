@@ -145,7 +145,7 @@
         }
 
         axios
-          .post('http://127.0.0.1:8000/api/v1/rest-auth/registration/',fd)
+          .post('https://127.0.0.1:8000/api/v1/rest-auth/registration/',fd)
           .then( response => {
              alert("User " + this.user.username  +" successfully registered")
              this.$router.push('/login')    

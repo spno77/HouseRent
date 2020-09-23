@@ -28,7 +28,7 @@
   },
   mounted(){
     axios
-      .get('http://127.0.0.1:8000/api/v1/houses/?ordering=cost')
+      .get('https://127.0.0.1:8000/api/v1/houses/?ordering=cost')
       .then(response => (this.houses = response.data))
   },
   
@@ -42,7 +42,7 @@
 
     deleteHouse: function(){
       axios
-       .delete('http://127.0.0.1:8000/api/v1/houses/'+ this.idd,
+       .delete('https://127.0.0.1:8000/api/v1/houses/'+ this.idd,
        {headers: {'Authorization': 'JWT ' + this.tuser.token}}
        )
       },
