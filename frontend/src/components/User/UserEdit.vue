@@ -62,6 +62,7 @@
 
 <script>
  import axios from 'axios';
+ import { mapGetters } from 'vuex';
 
  export default{
     data(){
@@ -88,6 +89,12 @@
            this.user = response.data
         })
      }, 
+    
+    computed:{
+      ...mapGetters([
+        'tuser'
+      ])
+    },
 
     methods:{
         
@@ -100,7 +107,9 @@
             lastname:   this.user.lastname,
             phone:      this.user.phone,
 
-          })
+          },
+           {headers: {'Authorization': 'JWT ' + this.tuser.token}} 
+          )
         this.$router.push('/')
       },
       

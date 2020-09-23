@@ -5,9 +5,10 @@
          
          <b-container>
          <button @click="getUsers()" class="btn btn-success">Show Users</button>
+         
          <button @click="export2txt()" class="btn btn-primary">Export data to local txt file</button>
   
-          <div>
+          <div v-if="this.show===true">
             <b-table striped hover :items="users" :fields="fields">
                <template v-slot:cell(is_approved)="row">
                  <b-form-group>
@@ -43,7 +44,7 @@
       return {
         users:  [],
         houses: [],
-        show: true,
+        show: false,
         fields: ['id','username','email','firstname','lastname',
     'is_staff','phone','role','is_approved','approve']
       }
@@ -64,8 +65,11 @@
 
       getUsers(){
          axios
-           .get('http://127.0.0.1:8000/api/v1/users/')
-           .then(response=>(this.users = response.data))  
+           .get('http://127.0.0.1:8000/api/v1/users/',
+            {headers: {'Authorization': 'JWT ' + this.tuser.token}}
+            )
+           .then(response=>(this.users = response.data))
+           this.show = true  
        },
 
        editUser(id) {
@@ -79,8 +83,9 @@
             firstname:   this.users[id].firstname,
             lastname:    this.users[id].lastname,
             phone:       this.users[id].phone,
-
-          })
+          },
+            {headers: {'Authorization': 'JWT ' + this.tuser.token}} 
+          )
           .catch((err) => {
            console.log(err.response.data);
            });

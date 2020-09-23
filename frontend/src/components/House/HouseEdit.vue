@@ -326,7 +326,8 @@
             plus_cost:      this.house.plus_cost, 
             rules:          this.house.rules ,
           
-          })
+          },
+          {headers: {'Authorization': 'JWT ' + this.tuser.token}})
           .catch((err) => {
              console.log(err.response.data);
            });

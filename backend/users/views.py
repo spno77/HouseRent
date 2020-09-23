@@ -9,15 +9,15 @@ from .models import User,Message
 from .serializers import UserSerializer,MessageSerializer 
 from rest_framework.response import Response
 from rest_framework import status
-
+from .permissions import IsOwnerOrAdmin
 
 class UserList(generics.ListCreateAPIView):
-	#permission_classes = [permissions.IsAdminUser,]
+	permission_classes = [permissions.IsAdminUser,]
 	queryset = get_user_model().objects.all()
 	serializer_class = UserSerializer
 
 class UserDetail(generics.RetrieveUpdateDestroyAPIView):
-	#permission_classes = [IsOwnerOrAdmin,]
+	permission_classes = [IsOwnerOrAdmin,]
 	queryset = get_user_model().objects.all()
 	serializer_class = UserSerializer
 

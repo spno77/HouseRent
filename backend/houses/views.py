@@ -8,6 +8,9 @@ from .serializers import HouseSerializer
 from django_filters.rest_framework import DjangoFilterBackend
 from url_filter.integrations.drf import DjangoFilterBackend
 
+from .permissions import IsOwnerOrAdmin,IsOwner
+from rest_framework import permissions
+
 class HouseList(generics.ListCreateAPIView):
 	queryset = House.objects.all()
 	serializer_class = HouseSerializer
@@ -34,9 +37,9 @@ class HouseList(generics.ListCreateAPIView):
 
 
 class HouseDetail(generics.RetrieveUpdateDestroyAPIView):
+	permission_classes = [IsOwnerOrAdmin]
 	queryset = House.objects.all()
 	serializer_class = HouseSerializer
-
 
 class HostHouseList(generics.ListCreateAPIView):
 	serializer_class = HouseSerializer

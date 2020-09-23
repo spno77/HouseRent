@@ -15,6 +15,7 @@
 
 <script>
  import axios from 'axios';
+ import { mapGetters } from 'vuex';
 
  export default {
   name: 'HouseDelete',
@@ -30,13 +31,20 @@
       .get('http://127.0.0.1:8000/api/v1/houses/?ordering=cost')
       .then(response => (this.houses = response.data))
   },
-
+  
+  computed:{
+      ...mapGetters([
+        'tuser'
+      ])
+  },
 
    methods:{
 
     deleteHouse: function(){
       axios
-       .delete('http://127.0.0.1:8000/api/v1/houses/'+ this.idd)
+       .delete('http://127.0.0.1:8000/api/v1/houses/'+ this.idd,
+       {headers: {'Authorization': 'JWT ' + this.tuser.token}}
+       )
       },
 
     goIndex: function(){
