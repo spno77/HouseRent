@@ -129,7 +129,7 @@
           { value: 'entire_place', text: 'Entire  Place' },
           { value: 'private_room', text: 'Private Room' },
           { value: 'shared_room',  text: 'Shared  Room' },
-         ],
+          ],
           clicked: false,
         },
 

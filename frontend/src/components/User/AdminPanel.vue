@@ -76,7 +76,7 @@
         id -= 1
         alert("user "+ this.users[id].username +" is approved")
         axios
-          .put('http://127.0.0.1:8000/api/v1/users/'+ this.users[id].id + '/',{
+          .put('https://127.0.0.1:8000/api/v1/users/'+ this.users[id].id + '/',{
             is_approved :  this.users[id].is_approved,
             username :    this.users[id].username,
             email:       this.users[id].email,

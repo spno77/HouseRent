@@ -2,11 +2,14 @@
   <div>
    <b-container>
 
-    <h1 class="ti"> Houses Info </h1>
+    <h1 class="ti"> Search Results </h1>
     <div class="overflow-auto">
     
     <b-pagination v-model="currentPage" :total-rows="rows" :per-page="perPage"> 
     </b-pagination>
+    <div v-show="houses.length===0">
+      <h2> No results for this search! </h2>
+     </div> 
      <b-row  align-v="center">
       
       <b-col md="3" v-for="(house, index) in houses.slice(this.perPage*(currentPage-1),this.perPage*(currentPage))" :key="index">

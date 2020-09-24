@@ -128,7 +128,7 @@
                 <b-form-select v-model="house.type" :options="house.options"> </b-form-select> 
               </b-form-group>   
 
-              <b-form-group id="input-group-2" label="Extra Cost:" label-for="input-2">
+              <b-form-group id="input-group-2" label="Extra Cost per person:" label-for="input-2">
                 <b-form-input
                   id="input-2"
                   type="number"
