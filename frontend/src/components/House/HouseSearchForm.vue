@@ -43,11 +43,61 @@
       </div>
   </div>
 
+    </b-form>
 
+ <b-button v-if="show2===false" v-on:click="onSubmit()" variant="success">Search</b-button>
+  <b-button v-if="show2===false" v-on:click="changeShow()" variant="dark">More Filters</b-button>
+   
+ <b-form v-if="show2">
+   
+    <b-form-group id="input-group-2" label="House Type:" label-for="input-2">
+      <b-form-select v-model="search.type" :options="search.options"> </b-form-select> 
+    </b-form-group>
+  
+   <div class="row">
+
+    <div class="col-md-6">
+
+    <b-form-group label="Garage:">
+      <b-form-radio-group class="pt-2">
+        <b-form-radio v-model="search.garage" value = "true">True</b-form-radio>
+        <b-form-radio v-model="search.garage" value = "false">False</b-form-radio>
+      </b-form-radio-group>
+    </b-form-group>
+    
+    <b-form-group label="Heat:">
+      <b-form-radio-group class="pt-2">
+          <b-form-radio v-model="search.heat" value = "true">True</b-form-radio>
+          <b-form-radio v-model="search.heat" value = "false">False</b-form-radio>
+      </b-form-radio-group>
+    </b-form-group>
+
+  </div>
+
+   <div class="col-md-6">
+    <b-form-group label="Wifi:">
+      <b-form-radio-group class="pt-2">
+        <b-form-radio v-model="search.wifi" value = "true">True</b-form-radio>
+        <b-form-radio v-model="search.wifi" value = "false">False</b-form-radio>
+      </b-form-radio-group>
+    </b-form-group>
+
+    <b-form-group label="Aircondition:">
+      <b-form-radio-group class="pt-2">
+        <b-form-radio v-model="search.aircondition" value = "true">True</b-form-radio>
+        <b-form-radio v-model="search.aircondition" value = "false">False</b-form-radio>
+      </b-form-radio-group>
+     </b-form-group>
+    </div> 
+
+    </div>
 
      <b-button  v-on:click="onSubmit()" variant="success">Search</b-button>
 
     </b-form>
+
+
+
     </b-container>
     </div>  
 </template>
@@ -69,9 +119,23 @@
           book_from: '',
           book_to: '',
           people_num: '',
+          type: '',
+          heat: '',
+          garage: '',
+          wifi: '',
+          aircondition: '',
+          options: [
+          { value: null, text: 'Please select a house type' },
+          { value: 'entire_place', text: 'Entire  Place' },
+          { value: 'private_room', text: 'Private Room' },
+          { value: 'shared_room',  text: 'Shared  Room' },
+         ],
+          clicked: false,
         },
 
-        show: true
+        show: true,
+        show2: false,
+        
       }
     },
 
@@ -91,6 +155,11 @@
       else{
         alert("Wrong Dates")
       }
+    },
+
+    changeShow(){
+      this.show2 = true
+      this.search.clicked = true
     },
 
     onFileChanged(event){

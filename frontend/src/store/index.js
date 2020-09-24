@@ -23,6 +23,12 @@ const state = {
 		book_from: '',
 		book_to: '',
 		people_num: '',
+		type: '',
+        heat: '',
+        garage: '',
+        wifi: '',
+        aircondition: '',
+        clicked: ''
 	},
 
 	images:[] , 
@@ -87,13 +93,30 @@ const actions = {
 		});
 	},
 	searchHouses({ commit },search_term) {
-		axios.get('https://127.0.0.1:8000/api/v1/houses/?country='+ search_term.country 
+		if(state.search_term.clicked===true){
+			axios.get('https://127.0.0.1:8000/api/v1/houses/?country='+ search_term.country 
+					+'&city='+search_term.city+'&people_num='+search_term.people_num
+					+'&book_from='+search_term.book_from
+					+'&book_to='+search_term.book_to
+					+'&house_type='+search_term.type
+					+'&heat='+search_term.heat
+					+'&garage='+search_term.garage
+					+'&wifi='+search_term.wifi
+					+'&aircondition='+search_term.aircondition
+					+ '&ordering=cost')
+			.then((response) => {
+			commit('UPDATE_HOUSES', response.data)
+			});
+		}else{
+			axios.get('https://127.0.0.1:8000/api/v1/houses/?country='+ search_term.country 
 					+'&city='+search_term.city+'&people_num='+search_term.people_num
 					+'&book_from='+search_term.book_from
 					+'&book_to='+search_term.book_to+ '&ordering=cost')
 		.then((response) => {
 			commit('UPDATE_HOUSES', response.data)
 		});
+			
+		}  
 	},
 	loginUser ({ commit }, user) {
 		axios.post('https://127.0.0.1:8000/api/v1/rest-auth/login/',user)
