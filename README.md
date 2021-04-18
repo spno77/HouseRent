@@ -1,5 +1,15 @@
 # HouseRent
-An airbnb-like site build with Django (Django REST Framework) + Vue (BootstrapVue + Vue Router + Vuex).
+An airbnb-like site build with **Django** (Django REST Framework)  + **Vue** (BootstrapVue + Vue Router + Vuex).
+
+### Examples:
+
+### Make a reservation
+
+![reserve](https://github.com/spno77/HouseRent/blob/master/backend/media/reserve.gif)
+
+### Admin Page
+
+![admin](https://github.com/spno77/HouseRent/blob/master/backend/media/admin.gif)
 
 
 ### Installation
@@ -32,8 +42,6 @@ An airbnb-like site build with Django (Django REST Framework) + Vue (BootstrapVu
 **Run**
 > npm run serve
 
-### Examples:
+### Database schema
 
-### Make a reservation
-
-![reserve](https://github.com/spno77/HouseRent/blob/master/backend/media/reserve.gif)
+![schema](https://github.com/spno77/HouseRent/blob/master/backend/media/schema.png)
